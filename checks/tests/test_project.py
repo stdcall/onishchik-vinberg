@@ -10,8 +10,11 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
+sys.path.insert(0, str(ROOT / 'checks' / 'lean'))
 
 from build import page_label_problems  # noqa: E402
+from check_axioms import (load_records, passage_problems,  # noqa: E402
+                          written_labels)
 from check_links import check_hint_links  # noqa: E402
 from check_indexes import index_checks  # noqa: E402
 from lint_typst import (Exceptions, coverage_checks, from_roman,  # noqa: E402
@@ -88,6 +91,32 @@ class Labels(unittest.TestCase):
                      'bib:34', 'bib:borel1956', 'bib:Borel56', 'def:group',
                      'l:circle', 'pg:17', 'pg:source-1'):
             self.assertIsNotNone(label_problem(name), name)
+
+
+class LeanProofs(unittest.TestCase):
+    """checks/lean-proofs.json binds each Lean file to the labels of the
+    passages it checks; check_axioms.py verifies the records before it
+    compiles anything."""
+
+    def test_records_and_passages(self):
+        _, problems = load_records()
+        self.assertEqual(problems, [])
+
+    def test_missing_label_names_the_file_and_the_label(self):
+        record = {'file': 'checks/lean/OnishchikVinberg/Claim.lean',
+                  'passages': ['pr:written', 'eq:lost']}
+        self.assertEqual(passage_problems(record, {'pr:written'}), [
+            'checks/lean/OnishchikVinberg/Claim.lean: no label <eq:lost> in '
+            'content/'])
+        record['passages'] = []
+        self.assertTrue(passage_problems(record, {'pr:written'}))
+
+    def test_labels_quoted_in_comments_do_not_count(self):
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / 'style.typ').write_text(
+                '// `#problem[…] <pr:quoted>`\n'
+                '#problem[Prove it.] <pr:written>\n')
+            self.assertEqual(written_labels(Path(directory)), {'pr:written'})
 
 
 def prose_of(text):

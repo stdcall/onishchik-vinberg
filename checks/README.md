@@ -11,8 +11,9 @@ text matches the book.
   surname and year, and groups; Typst reads the BibLaTeX; the numbers 1–56
   are counted in the printed order; every citation names an entry), the
   numbering (an inserted statement renumbers the following ones and every
-  reference to them; the book's exceptions give the printed numbers), and
-  unit tests of the lint, the page-label, hint-link and index checks.
+  reference to them; the book's exceptions give the printed numbers), the
+  passage labels of `lean-proofs.json`, and unit tests of the lint, the
+  page-label, hint-link and index checks.
 * `sage/` — `just check-sage` runs every `*.sage` and `*.py` here with
   `sage -python`, so each script is plain Python that imports `sage.all`
   (last run with SageMath 10.9). One script per chapter or topic, exact
@@ -26,10 +27,12 @@ text matches the book.
   `lakefile.toml`) with small formalizations of important bounded steps of
   the book, one file per claim; the header of each file names the place in
   the book, maps the book's notation and lists what is not covered.
-  `lean-proofs.json` records each file's SHA, its declarations, the claim
-  and its limits, and binds it to the SHA of the chapter file it checks: a
-  changed chapter file fails the check until the claim has been read in the
-  new text and the binding renewed (`check_axioms.py --bind`).
+  `lean-proofs.json` records each file's declarations, the claim and its
+  limits, and the labels of the passages it checks (`passages`: the
+  statements, formulas and hints, `pr:…`, `eq:…`, `hint:…`);
+  `just check-lean` and `just test` fail if one of these labels is missing
+  from `content/`. When such a passage or proof changes, review their
+  correspondence.
   `just check-lean` (`lean/check_axioms.py`) compiles every file, rejects
   errors, warnings and `sorry`, and allows only the axioms propext,
   Classical.choice and Quot.sound. By default it runs in `checks/lean`

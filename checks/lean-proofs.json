@@ -1,7 +1,6 @@
 [
   {
     "file": "checks/lean/OnishchikVinberg/AffineGroup.lean",
-    "sha256": "64a2e1417fc02de661bda514e1ea65bd98e7a896a9d5e77a487dd6ebf40efff7",
     "declarations": [
       "OnishchikVinberg.AffineGroup.H_le_G",
       "OnishchikVinberg.AffineGroup.H_comm",
@@ -13,13 +12,12 @@
     ],
     "book": "Chapter 1, § 4, Exercise 15 (content/14-derived-algebra.typ, Exercise 1.4.15 `exc:codimension-one-normal-complement`): the counterexample to the printed statement without “normal”. In the group G of the maps x ↦ ax + b, a > 0 (the matrices [[a, b], [0, 1]] in GL(2, ℝ)), the subgroup H of the maps x ↦ ax is commutative and not normal: for g: x ↦ x + 1, h: x ↦ 2x, g h g⁻¹ = [[2, -1], [0, 1]] ∉ H.",
     "limitations": "Only the group-theoretic counterexample. Not formalized: that G is a connected solvable Lie group of dimension 2 and H a connected Lie subgroup of codimension 1 (evident from a = e^s), and the corrected statement with H normal.",
-    "content": {
-      "content/14-derived-algebra.typ": "e658ea09bce68d6e52f655213fefd1c76a9b618559dc0cb214ce68513f5ec93d"
-    }
+    "passages": [
+      "exc:codimension-one-normal-complement"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/DerivationExtension.lean",
-    "sha256": "29666bafa0f08a8b2094f9e65af2cfe039479b957cf666626db19526459b3ce4",
     "declarations": [
       "OnishchikVinberg.DerivationExtension.map_one_eq_zero",
       "OnishchikVinberg.DerivationExtension.map_pow",
@@ -37,13 +35,14 @@
     ],
     "book": "Chapter 2, § 3, Problem 9 (with the added hypothesis char K = 0) and Hint 9 (content/23-dimension.typ, Problem 2.3.9 `pr:derivation-extends-algebraically` and its hint): the chain rule ∂(f(u)) = f^∂(u) + f'(u)∂u for a derivation (formula (2.3.1) with φ = id) and f ∈ A[T]; the linear equation f'(u)∂u + f^∂(u) = 0 for a root u; uniqueness of the extension to A[u] when f'(u) acts injectively; f'(u) ≠ 0 for the minimal polynomial over a field of characteristic 0; in characteristic p: derivations kill p-th powers, (X^p - t)' = 0, and d/dt on K[t] ⊂ K[s], t = s^p, extends to no derivation K[s] → L for any nontrivial K[s]-algebra L.",
     "limitations": "Derivations are additive maps with the Leibniz rule (K-linearity unused). Not formalized: the existence of the extension in characteristic 0 (construction and well-definedness on A[u]), the reductions to B = A[u] and to the field of fractions (Problem 8), the irreducibility of X^p - t over K(t), Problem 10 and Theorem 3.",
-    "content": {
-      "content/23-dimension.typ": "60d1289044d6bc16cf6e36c7f706c081e472e7ef41ea5a5e06389f40ab930b88"
-    }
+    "passages": [
+      "eq:phi-derivation-leibniz",
+      "pr:derivation-extends-algebraically",
+      "hint:derivation-extends-algebraically"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/AdNilpotent.lean",
-    "sha256": "cbebfe3fcef2803a97c2ace1cead8b3f5775dc27333bc9fcb6631347323ef697",
     "declarations": [
       "OnishchikVinberg.AdNilpotent.sub_pow_two_mul_sub_one_eq_zero",
       "OnishchikVinberg.AdNilpotent.ad_pow_eq_zero",
@@ -52,13 +51,13 @@
     ],
     "book": "Chapter 3, § 3, subsection “Engel's Theorem”, Problem 12 and Hint 12 (content/33-tangent-algebra.typ, Problem 3.3.12 `pr:unipotent-algebra-adjoint-unipotent` and its hint): commuting a, b with a^m = b^m = 0 give (a - b)^(2m-1) = 0; hence X^m = 0 gives (ad X)^(2m-1) = 0 on 𝔤𝔩(V) (any associative algebra over a commutative ring) and on every linear Lie algebra 𝔤 ⊂ 𝔤𝔩(V); so ad 𝔤 is unipotent if 𝔤 is.",
     "limitations": "Exactly the bound of Hint 12 and Problem 12; Engel's theorem (Theorem 6) and its corollaries are not formalized; sharpness of 2m - 1 is not checked.",
-    "content": {
-      "content/33-tangent-algebra.typ": "ff2be7e9e9d5bab7ea79c8c3814faefcd25eb9fbc14ffc1f8afb4c40725ef836"
-    }
+    "passages": [
+      "pr:unipotent-algebra-adjoint-unipotent",
+      "hint:unipotent-algebra-adjoint-unipotent"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/WeightString.lean",
-    "sha256": "1461b9f3a5839da597679b594d07507cc865ec0a769e9a2d2410e965baa6f4c4",
     "declarations": [
       "OnishchikVinberg.WeightString.lie_pow_apply",
       "OnishchikVinberg.WeightString.h_pow_apply",
@@ -74,13 +73,12 @@
     ],
     "book": "Chapter 4, § 1, Hint 41 in the repaired reading (content/41-preliminaries.typ, the hint to Problem 4.1.41 `pr:root-vector-nonzero-on-string`): with [e_α, e_(-α)] = h_α, [h_α, e_α] = 2e_α and v ∈ V_μ, μ = λ - pα, h_α v = μ(h_α)v, e_(-α)v = 0: h_α e_α^k v = (μ(h_α) + 2k) e_α^k v and e_(-α) e_α^(k+1) v = -(k+1)(μ(h_α) + k) e_α^k v; U = span of e_α^k V_μ, 0 ≤ k ≤ s, is invariant under e_α, e_(-α), h_α when e_α^(s+1) V_μ = 0; e_α^k w ≠ 0 for k ≤ s if e_α^s w ≠ 0; the weights μ(h_α) + 2k (0 ≤ k ≤ s) are symmetric iff μ(h_α) = -s, so with μ(h_α) = -(p + q) they are not symmetric for s < p + q.",
     "limitations": "Any Lie module over a commutative ring; the relation [h_α, e_(-α)] = -2e_(-α) is not needed. Not formalized: Problem 40 (μ(h_α) = -(p + q) and integrality of weights), directness of the sum, the equality of the weight system of U with {μ(h_α) + 2k} as sets, and the Corollary of Theorem 5 that concludes Problem 41.",
-    "content": {
-      "content/41-preliminaries.typ": "f1b52d1c3da9f88f18e3aac578b304ec5235a81d05557f0bfe9b451957fc06e5"
-    }
+    "passages": [
+      "hint:root-vector-nonzero-on-string"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/CartanIntegers.lean",
-    "sha256": "ed731f09ebccb35fdf3d312723c9a21845bf0e5e26f9e407ef812955ec855415",
     "declarations": [
       "OnishchikVinberg.CartanIntegers.cartan_mul_cartan",
       "OnishchikVinberg.CartanIntegers.cosAngle_sq_le_one",
@@ -92,13 +90,12 @@
     ],
     "book": "Chapter 4, § 2, subsection “Principal Definitions and Examples”, Problem 8 and its table (content/42-root-systems.typ, Problem 4.2.8 `pr:root-angles-and-length-ratios`), with ⟨λ|μ⟩ = 2(λ, μ)/(μ, μ): ⟨α|β⟩⟨β|α⟩ = 4cos²θ for nonzero α, β in a real inner product space; for non-proportional α, β with integer ⟨α|β⟩, ⟨β|α⟩ the product is 0, 1, 2 or 3; if both are nonpositive integers and |β| ≥ |α| then (⟨α|β⟩, ⟨β|α⟩, cos θ, |β|²/|α|²) is one of the six printed rows (cos θ = 0, -1/2, -√2/2, -√3/2, -1, -1).",
     "limitations": "θ enters through cos θ = (α, β)/(|α||β|); the angles π/2, 2π/3, 3π/4, 5π/6, π of the printed column follow from the standard cosine values and the injectivity of cos on [0, π], which are not rechecked here. The problem does not claim that every row occurs, and this is not checked.",
-    "content": {
-      "content/42-root-systems.typ": "ee8f247833fbbc482a72d5a79e7d0e7e6b238d5aa6e998cc7db34552145cf3ca"
-    }
+    "passages": [
+      "pr:root-angles-and-length-ratios"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/Averaging.lean",
-    "sha256": "8dde72798810ea42e600add493edf6ad89799276f96f4eb57caa77887bbd4895",
     "declarations": [
       "OnishchikVinberg.Averaging.psi_mul_psi",
       "OnishchikVinberg.Averaging.phi_mul_iff",
@@ -107,13 +104,17 @@
     ],
     "book": "Chapter 5, § 2, subsection “Lie Groups with Compact Tangent Algebras”, proof of Lemma 2 (content/52-compact-reductive.typ, Lemma 5.2.2 `lem:vector-group-finite-extension-splits`, formulas (5.2.4)–(5.2.8) `eq:splitting-homomorphism-ansatz`, `eq:factor-set-definition`, `eq:factor-set-coboundary-multiplicative`, `eq:conjugation-action-on-vector-group`, `eq:factor-set-coboundary-additive`, Problems 5.2.13 `pr:factor-set-cocycle-identity` and 5.2.14 `pr:cocycle-coboundary-by-averaging`): with f defined by (5), φ(x) = h(x)ψ(x) is multiplicative iff (6), in any group; the multiplicative form of Problem 13 (associativity); Problem 14: for a finite group L₀, a representation R₀ on a vector space A over a field of characteristic 0 and f satisfying Problem 13, h(x) = -(1/|L₀|) Σ_y f(x, y) satisfies (8).",
     "limitations": "The translation from the multiplicative identities to the additive ones (A commutative, f and h with values in A, conjugation by ψ(x) as the linear representation R₀, Problem 1.2.26) is not formalized; nor is the topological part of Lemma 2.",
-    "content": {
-      "content/52-compact-reductive.typ": "854df33ea73917862fa607c07ddb1afb665a39fa16da4b7a2bdd118f53d99ccb"
-    }
+    "passages": [
+      "eq:splitting-homomorphism-ansatz",
+      "eq:factor-set-definition",
+      "eq:factor-set-coboundary-multiplicative",
+      "eq:factor-set-coboundary-additive",
+      "pr:factor-set-cocycle-identity",
+      "pr:cocycle-coboundary-by-averaging"
+    ]
   },
   {
     "file": "checks/lean/OnishchikVinberg/LeviProjection.lean",
-    "sha256": "3dce9438405fcb96e231c28173c95a559c1bd975651a651c57ce1fcb6eee412d",
     "declarations": [
       "OnishchikVinberg.LeviProjection.rho_apply",
       "OnishchikVinberg.LeviProjection.Q_le_P",
@@ -134,8 +135,9 @@
     ],
     "book": "Chapter 6, subsection “Levi's Theorem”, Problems 5 and 6 as corrected and the paragraph after Problem 6 (content/60-levi-decomposition.typ, Problems 6.1.5 `pr:operators-scalar-on-radical` and 6.1.6 `pr:operators-scalar-on-radical-invariant`): for an ideal I (rad 𝔤) of a Lie algebra over a field, P = {v : v(𝔤) ⊂ I, v|I scalar} and Q = {v ∈ P : v|I = 0} are subspaces, Q ⊂ P, dim P - dim Q = 1 for finite-dimensional 𝔤 and I ≠ 0; with ρ(x)v = [ad x, v]: ρ(x)P ⊂ Q for every x ∈ 𝔤, P, Q, R = ad I are ρ(𝔤)-invariant; for commutative I and x ∈ I, ρ(x)v = ad(-cx) ∈ R; for x ∈ I, ad x ∈ P iff ad x ∈ Q iff [x, I] = 0, hence R ⊂ Q (and R ⊂ P) iff I is commutative; v₀ ∈ P with v₀|I = λE, λ ≠ 0 and ρ(𝔤)v₀ ⊂ R gives the projection v₀/λ onto I normalizing ad 𝔤.",
     "limitations": "Solvability of I is never used. Not formalized: the representation of 𝔤/rad 𝔤 in P/R, its complete reducibility (Corollary 3 of Theorem 5.2.13) and hence the existence of v₀, Problems 3 and 4, and the rest of the proof of Levi's theorem.",
-    "content": {
-      "content/60-levi-decomposition.typ": "99e3da9f5ec30f1680c87236a5fcb083f3ad1702a4a86165c5f46067c4be6957"
-    }
+    "passages": [
+      "pr:operators-scalar-on-radical",
+      "pr:operators-scalar-on-radical-invariant"
+    ]
   }
 ]
