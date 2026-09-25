@@ -119,7 +119,7 @@ them, and the labels stay.
 | Examples. 1) … 2) … | `_Examples._ #eg <exm:vector-subspace-lie-subgroup> …`, the next item a new paragraph `#eg <exm:circle-lie-subgroup> …` |
 | Example 5. … | `#example[…] <exm:roots-of-sl-n>` |
 | Exercises 1) … | `#exercises[#exercise[…] <exc:differentiable-inversion-automatic> …]` |
-| Hints to Problems 3. … / 1, 2. … | `#hints[#hint[@pr:lie-subgroup-local-criterion][…] …]` / `#hint[@pr:direct-product-lie-groups, @pr:lie-subgroup-is-lie-group][…]`; a hint referred to carries `<hint:…>` after its body, named after its problem |
+| Hints to Problems 3. … / 1, 2. … | `#hints[#hint[@pr:lie-subgroup-local-criterion][…] …]` / `#hint[@pr:direct-product-lie-groups, @pr:lie-subgroup-is-lie-group][…]`; a hint referred to (also from `checks/lean-proofs.json`) carries `<hint:…>` after its body, named after its problem |
 | formula (17) | `$ … $ <eq:homomorphism-path-equation>` |
 | (F1) The number of roots … | `#formula-item[The number of roots …] <eq:number-of-roots>` |
 | Table 5. … | `#table-section[Decomposition of Tensor Products …] <tab:tensor-product-decompositions>`, then the body as one or more `#book-table(columns: …, head: (…), ..cells)`; a part printed sideways inside `#sideways(…)` |
@@ -278,10 +278,9 @@ The mathematics is checked independently in `checks/` (see
   run on demand with `just check-sage`.
 - `checks/lean/` — Lean formalizations of bounded steps of the book, listed
   in `checks/lean-proofs.json` with their declarations, the claim, its
-  limits and the SHA-256 of the chapter file they check. A change to a
-  bound chapter file fails the check until the claim has been read in the
-  new text and the binding renewed with
-  `uv run --locked python checks/lean/check_axioms.py --bind`. CI builds
+  limits and the labels of the passages they check; `just check-lean` and
+  `just test` fail if one of these labels is missing from `content/`. When
+  such a passage or proof changes, review their correspondence. CI builds
   the project and runs the check; locally, with elan installed:
 
   ```sh

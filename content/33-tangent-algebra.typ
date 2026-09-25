@@ -525,6 +525,7 @@ corollaries.
 
   #hint[@pr:unipotent-algebra-adjoint-unipotent][It is subject to a
     straightforward verification that if $X^m = 0$ then $(ad X)^(2m - 1) = 0$.]
+  <hint:unipotent-algebra-adjoint-unipotent>
 
   #hint[@pr:exp-semisimple-nilpotent-criterion][First prove the “only if” part.
     After this prove that $exp t X = (exp t X_s)(exp t X_n)$ is the

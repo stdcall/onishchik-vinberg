@@ -1211,7 +1211,7 @@ assertions analogous to those of Problems~@pr:alpha-string-of-weights and
     that $U = plus.o.big_(0 <= k <= s) rho(e_alpha)^k V_(lambda - p alpha)$ is
     invariant with respect to $rho|frak(g)^((alpha))$. If $s < p + q$ then the
     weight system of the subrepresentation of $G^((alpha))$ in $U$ is not
-    symmetric.]
+    symmetric.] <hint:root-vector-nonzero-on-string>
 
   #hint[@pr:bracket-of-root-spaces][Apply
     Problem~@pr:root-vector-nonzero-on-string to the adjoint representation.]
