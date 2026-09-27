@@ -3,7 +3,7 @@
 // beginning of § 2.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge
 
 == Background <sec:algebraic-groups-background>
 
@@ -706,15 +706,12 @@ For the proof of the following theorem see e.g. [@bib:Merzlyakov1987].
     rational maps
     $
       #cd(
-        (A: (0, 0, $G$), B: (0, 1, $H$), C: (1, 0, $G$), D: (1, 1, $H$)),
-        (
-          ar("A", "B", label: $f_0$),
-          ar("A", "C", label: $l(g)$, side: "right"),
-          ar("B", "D", label: $l(f(g))$),
-          ar("C", "D", label: $f_0$),
-        ),
-        column: 26mm,
-        row: 22mm,
+        cell-size: (26mm, 22mm),
+        $G & H \ G & H$,
+        edge((0, 0), "r", $f_0$, "->"),
+        edge((0, 0), "d", $l(g)$, "->", label-side: right),
+        edge((1, 0), "d", $l(f(g))$, "->", label-side: left),
+        edge((0, 1), "r", $f_0$, "->"),
       )
     $
     commutes. From here we deduce that $f_0$ is defined everywhere, hence $f_0$

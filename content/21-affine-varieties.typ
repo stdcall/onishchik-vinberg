@@ -1,7 +1,7 @@
 // Chapter 2, § 1. Affine Algebraic Varieties. Printed pages 59-74.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge
 #import "diagrams/21-affine-varieties.typ": factorization, factorization-proof
 
 == Affine Algebraic Varieties <sec:affine-algebraic-varieties>
@@ -316,16 +316,13 @@ $phi: A -> C$ and $psi: B -> C$ there exists a unique homomorphism
 $omega: A times.o B -> C$ such that the diagram
 $
   #cd(
-    (T: (0, 1, $A times.o B$), A: (1, 0, $A$), B: (1, 2, $B$), C: (2, 1, $C$)),
-    (
-      ar("A", "T", label: $iota_A$),
-      ar("B", "T", label: $iota_B$, side: "right"),
-      ar("T", "C", label: $omega$),
-      ar("A", "C", label: $phi$, side: "right"),
-      ar("B", "C", label: $psi$),
-    ),
-    column: 17mm,
-    row: 10mm,
+    cell-size: (17mm, 10mm),
+    $& A times.o B \ A & & B \ & C$,
+    edge((0, 1), "ur", $iota_A$, "->", label-side: left),
+    edge((2, 1), "ul", $iota_B$, "->", label-side: right),
+    edge((1, 0), "dd", $omega$, "->", label-side: left),
+    edge((0, 1), "dr", $phi$, "->", label-side: right),
+    edge((2, 1), "dl", $psi$, "->", label-side: left),
   )
 $
 commutes. This homomorphism is defined by the formula

@@ -2,7 +2,7 @@
 // below the § 2 hints on page 254 and ends above § 4 on page 268.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge, node
 
 == Cartan Decomposition <sec:cartan-decomposition>
 
@@ -160,20 +160,12 @@ formula~@eq:cartan-involution-inner-product.
   It follows from the commutative diagram
   $
     #cd(
-      (
-        A: (0, 0, $frak(p)$),
-        B: (0, 1, $P$),
-        C: (1, 0, $ad frak(p)$),
-        D: (1, 1, $hat(P)$),
-      ),
-      (
-        ar("A", "B", label: $exp$),
-        ar("A", "C", label: $ad$, side: "right"),
-        ar("B", "D", label: $Ad$),
-        ar("C", "D", label: $exp$),
-      ),
-      column: 22mm,
-      row: 17mm,
+      cell-size: (22mm, 17mm),
+      $frak(p) & P \ ad frak(p) & hat(P)$,
+      edge((0, 0), "r", $exp$, "->"),
+      edge((0, 0), "d", $ad$, "->", label-side: right),
+      edge((1, 0), "d", $Ad$, "->", label-side: left),
+      edge((0, 1), "r", $exp$, "->"),
     )
   $ <eq:cartan-subspace-exp-diagram>
   #source(272)that $hat(P) = Ad P$ and the maps $exp: frak(p) -> P$ and
@@ -189,20 +181,12 @@ formula~@eq:cartan-involution-inner-product.
   Since the diagram
   $
     #cd(
-      (
-        A: (0, 0, $K times frak(p)$),
-        B: (0, 1, $G$),
-        C: (1, 0, $hat(K) times hat(frak(p))$),
-        D: (1, 1, $Aut frak(g)$),
-      ),
-      (
-        ar("A", "B", label: $phi$),
-        ar("A", "C", label: $Ad times ad$, side: "right"),
-        ar("B", "D", label: $Ad$),
-        ar("C", "D", label: $hat(phi)$),
-      ),
-      column: 28mm,
-      row: 17mm,
+      cell-size: (28mm, 17mm),
+      $K times frak(p) & G \ hat(K) times hat(frak(p)) & Aut frak(g)$,
+      edge((0, 0), "r", $phi$, "->"),
+      edge((0, 0), "d", $Ad times ad$, "->", label-side: right),
+      edge((1, 0), "d", $Ad$, "->", label-side: left),
+      edge((0, 1), "r", $hat(phi)$, "->"),
     )
   $
   where $hat(phi)$ determines the polar decomposition of $Aut frak(g)$,
@@ -733,20 +717,12 @@ in case when $G$ is connected and semisimple.
   $Phi: G -> H\/j(Gamma)$ such that the diagram
   $
     #cd(
-      (
-        A: (0, 0, $tilde(G)$),
-        B: (0, 1, $H$),
-        C: (1, 0, $G$),
-        D: (1, 1, $H\/j(Gamma)$),
-      ),
-      (
-        ar("A", "B", label: $j$),
-        ar("A", "C", label: $pi$, side: "right"),
-        ar("B", "D", label: $tilde(pi)$),
-        ar("C", "D", label: $Phi$),
-      ),
-      column: 22mm,
-      row: 17mm,
+      cell-size: (22mm, 17mm),
+      $tilde(G) & H \ G & H\/j(Gamma)$,
+      edge((0, 0), "r", $j$, "->"),
+      edge((0, 0), "d", $pi$, "->", label-side: right),
+      edge((1, 0), "d", $tilde(pi)$, "->", label-side: left),
+      edge((0, 1), "r", $Phi$, "->"),
     )
   $ <eq:linearizer-diagram>
   #source(280)where $tilde(pi)$ is the natural homomorphism, commutes. By
@@ -954,18 +930,11 @@ subalgebra of $frak(g)(CC)$ containing $frak(t)$.
     have the commuting diagram
     $
       #cd(
-        (
-          a: (1, 0, $i frak(a)$),
-          A: (0, 1, $A_1 subset G_1$),
-          B: (2, 1, $A_2 subset G_2.$),
-        ),
-        (
-          ar("a", "A", label: $cal(E)_(G_1)$),
-          ar("a", "B", label: $cal(E)_(G_2)$, side: "right"),
-          ar("A", "B", label: $pi$),
-        ),
-        column: 24mm,
-        row: 11mm,
+        cell-size: (24mm, 11mm),
+        $& A_1 subset G_1 \ i frak(a) \ & A_2 subset G_2.$,
+        edge((0, 1), "ur", $cal(E)_(G_1)$, "->", label-side: left),
+        edge((0, 1), "dr", $cal(E)_(G_2)$, "->", label-side: right),
+        edge((1, 0), "dd", $pi$, "->", label-side: left),
       )
     $ <eq:characteristic-lattice-covering-diagram>
     Corollary~@cor:group-center-in-k-center of
@@ -1008,24 +977,26 @@ subalgebra of $frak(g)(CC)$ containing $frak(t)$.
     @eq:characteristic-lattice-covering-diagram:
     $
       #cd(
-        (
-          a: (1, 0, $i frak(a)$),
-          A: (0, 1, $tilde(A) subset tilde(G)$),
-          H: (0, 2.7, $H$),
-          B: (2, 1, $A subset G$),
-          Q: (2, 2.7, $H\/j(Gamma)$),
+        cell-size: (24mm, 13mm),
+        node((0, 1), $i frak(a)$),
+        node((1, 0), $tilde(A) subset tilde(G)$),
+        node((2.7, 0), $H$),
+        node((1, 2), $A subset G$),
+        node((2.7, 2), $H\/j(Gamma)$),
+        edge((0, 1), (1, 0), $cal(E)_(tilde(G))$, "->", label-side: left),
+        edge((0, 1), (1, 2), $cal(E)_G$, "->", label-side: right),
+        edge(
+          (0, 1),
+          (2.7, 0),
+          $exp_H$,
+          "->",
+          label-side: right,
+          shift: (0pt, -6pt),
         ),
-        (
-          ar("a", "A", label: $cal(E)_(tilde(G))$),
-          ar("a", "B", label: $cal(E)_G$, side: "right"),
-          ar("a", "H", label: $exp_H$, side: "right", end: "south-west"),
-          ar("A", "H", label: $j$),
-          ar("A", "B", label: $pi$),
-          ar("H", "Q", label: $tilde(pi)$),
-          ar("B", "Q", label: $Phi$),
-        ),
-        column: 24mm,
-        row: 13mm,
+        edge((1, 0), (2.7, 0), $j$, "->"),
+        edge((1, 0), (1, 2), $pi$, "->", label-side: left),
+        edge((2.7, 0), (2.7, 2), $tilde(pi)$, "->", label-side: left),
+        edge((1, 2), (2.7, 2), $Phi$, "->"),
       )
     $
     It implies that
