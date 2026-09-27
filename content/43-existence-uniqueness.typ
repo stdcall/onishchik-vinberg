@@ -4,7 +4,7 @@
 // page 202 opens § 4.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge, node
 #import "diagrams/dynkin.typ": dynkin, system, v
 
 == Existence and Uniqueness Theorems <sec:existence-uniqueness-theorems>
@@ -295,20 +295,12 @@ $ <eq:weight-decomposition-v-hat>
   b) The diagram
   $
     #cd(
-      (
-        A: (0, 0, $hat(V)$),
-        B: (0, 1, $hat(V)$),
-        C: (1, 0, $V$),
-        D: (1, 1, $V$),
-      ),
-      (
-        ar("A", "B", label: $hat(rho)(x)$),
-        ar("A", "C", label: $p$, side: "right"),
-        ar("B", "D", label: $p$),
-        ar("C", "D", label: $rho(pi(x))$),
-      ),
-      column: 26mm,
-      row: 26mm,
+      cell-size: (26mm, 26mm),
+      $hat(V) & hat(V) \ V & V$,
+      edge((0, 0), "r", $hat(rho)(x)$, "->"),
+      edge((0, 0), "d", $p$, "->", label-side: right),
+      edge((1, 0), "d", $p$, "->", label-side: left),
+      edge((0, 1), "r", $rho(pi(x))$, "->"),
     )
   $
   commutes for any $x in hat(frak(g))$ and
@@ -634,18 +626,19 @@ Therefore it suffices to prove that @eq:characters-equal-weight-lattice implies
 $i_* = 0$. To do this consider the diagram
 $
   #cd(
-    (
-      T: (0, 0, $T = T^((1)) times dots.c times T^((l))$),
-      G: (0, 1, $G$),
-      P: (1, 0.7, $G^((1)) times dots.c times G^((l))$),
+    cell-size: (40mm, 44mm),
+    node((0, 0), $T = T^((1)) times dots.c times T^((l))$),
+    node((1, 0), $G$),
+    node((0.7, 1), $G^((1)) times dots.c times G^((l))$),
+    edge((0, 0), (1, 0), $i$, "->"),
+    edge(
+      (0, 0),
+      (0.7, 1),
+      $i^((1)) times dots.c times i^((l))$,
+      "->",
+      label-side: right,
     ),
-    (
-      ar("T", "G", label: $i$),
-      ar("T", "P", label: $i^((1)) times dots.c times i^((l))$, side: "right"),
-      ar("P", "G", label: $m$),
-    ),
-    column: 40mm,
-    row: 44mm,
+    edge((0.7, 1), (1, 0), $m$, "->", label-side: left),
   )
 $
 where $i^((k)): T^((k)) -> G^((k))$ is an embedding and
@@ -735,20 +728,12 @@ $Q^or subset P^or subset frak(t)(RR)$.
   the commutative diagram
   $
     #cd(
-      (
-        A: (0, 0, $tilde(T)$),
-        B: (0, 1, $T$),
-        C: (1, 0, $frak(t)$),
-        D: (1, 1, $frak(t)$),
-      ),
-      (
-        ar("A", "B", label: $p$),
-        ar("C", "A", label: $tilde(cal(E))$),
-        ar("D", "B", label: $cal(E)$, side: "right"),
-        ar("C", "D", label: $d p$),
-      ),
-      column: 26mm,
-      row: 26mm,
+      cell-size: (26mm, 26mm),
+      $tilde(T) & T \ frak(t) & frak(t)$,
+      edge((0, 0), "r", $p$, "->"),
+      edge((0, 1), "u", $tilde(cal(E))$, "->", label-side: left),
+      edge((1, 1), "u", $cal(E)$, "->", label-side: right),
+      edge((0, 1), "r", $d p$, "->"),
     )
   $ <eq:covering-tori-diagram>
   where $d p$ is an isomorphism and where $cal(E)$ and $tilde(cal(E))$ are
@@ -1562,26 +1547,16 @@ by $M$ uniquely up to an equivalence.
     $tilde(Phi): tilde(G)_1 -> tilde(G)_2$ such that the diagram
     $
       #cd(
-        (
-          A: (0, 0, $tilde(T)_1$),
-          B: (0, 3, $tilde(T)_2$),
-          C: (1, 1, $frak(t)_1$),
-          D: (1, 2, $frak(t)_2$),
-          E: (2, 0, $T_1$),
-          F: (2, 3, $T_2$),
-        ),
-        (
-          ar("A", "B", label: $tilde(Phi)$),
-          ar("A", "E", label: $p_1$, side: "right"),
-          ar("B", "F", label: $p_2$),
-          ar("C", "A", label: $tilde(cal(E))_1$, side: "right"),
-          ar("D", "B", label: $tilde(cal(E))_2$),
-          ar("C", "E", label: $cal(E)_1$),
-          ar("D", "F", label: $cal(E)_2$, side: "right"),
-          ar("C", "D", label: $phi$),
-        ),
-        column: 20mm,
-        row: 16mm,
+        cell-size: (20mm, 16mm),
+        $tilde(T)_1 & & & tilde(T)_2 \ & frak(t)_1 & frak(t)_2 \ T_1 & & & T_2$,
+        edge((0, 0), "rrr", $tilde(Phi)$, "->"),
+        edge((0, 0), "dd", $p_1$, "->", label-side: right),
+        edge((3, 0), "dd", $p_2$, "->", label-side: left),
+        edge((1, 1), "ul", $tilde(cal(E))_1$, "->", label-side: right),
+        edge((2, 1), "ur", $tilde(cal(E))_2$, "->", label-side: left),
+        edge((1, 1), "dl", $cal(E)_1$, "->", label-side: left),
+        edge((2, 1), "dr", $cal(E)_2$, "->", label-side: right),
+        edge((1, 1), "r", $phi$, "->"),
       )
     $
     where $cal(E)_i$, $tilde(cal(E))_i$ are defined as in

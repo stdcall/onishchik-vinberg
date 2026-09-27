@@ -2,7 +2,7 @@
 // 42-50; pages 42 and 50 are shared with § 2 and § 4.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge
 
 == Connectedness and Simple Connectedness
 <sec:connectedness-simple-connectedness>
@@ -182,20 +182,12 @@ that $f(p(tilde(x)_0)) = q(tilde(y)_0)$ there exists a unique differentiable map
 $tilde(f): tilde(X) -> tilde(Y)$ such that the diagram
 $
   #cd(
-    (
-      A: (0, 0, $tilde(X)$),
-      B: (0, 1, $tilde(Y)$),
-      C: (1, 0, $X$),
-      D: (1, 1, $Y$),
-    ),
-    (
-      ar("A", "B", label: $tilde(f)$),
-      ar("A", "C", label: $p$),
-      ar("B", "D", label: $q$),
-      ar("C", "D", label: $f$),
-    ),
-    column: 26mm,
-    row: 24mm,
+    cell-size: (26mm, 24mm),
+    $tilde(X) & tilde(Y) \ X & Y$,
+    edge((0, 0), "r", $tilde(f)$, "->"),
+    edge((0, 0), "d", $p$, "->", label-side: left),
+    edge((1, 0), "d", $q$, "->", label-side: left),
+    edge((0, 1), "r", $f$, "->"),
   )
 $ <eq:covering-lifting-property>
 commutes and $tilde(f)(tilde(x)_0) = tilde(y)_0$. In this case we say that
@@ -261,20 +253,12 @@ therefore the group $tilde(G)$ is called the #idx(
   the diagram
   $
     #cd(
-      (
-        A: (0, 0, $tilde(G)_1$),
-        B: (0, 1, $tilde(G)_2$),
-        C: (1, 0, $tilde(G)_1\/N_1$),
-        D: (1, 1, $tilde(G)_2\/N_2$),
-      ),
-      (
-        ar("A", "B", label: $tilde(f)$),
-        ar("A", "C", label: $p_1$, side: "right"),
-        ar("B", "D", label: $p_2$),
-        ar("C", "D", label: $f$),
-      ),
-      column: 32mm,
-      row: 24mm,
+      cell-size: (32mm, 24mm),
+      $tilde(G)_1 & tilde(G)_2 \ tilde(G)_1\/N_1 & tilde(G)_2\/N_2$,
+      edge((0, 0), "r", $tilde(f)$, "->"),
+      edge((0, 0), "d", $p_1$, "->", label-side: right),
+      edge((1, 0), "d", $p_2$, "->", label-side: left),
+      edge((0, 1), "r", $f$, "->"),
     )
   $
   commutes, $tilde(f)(N_1) = N_2$.

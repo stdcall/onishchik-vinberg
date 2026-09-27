@@ -2,7 +2,7 @@
 // the § 1 hints on page 19 and ends above § 3 on page 42.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge
 
 == Tangent Algebra <sec:lie-group-tangent-algebra>
 
@@ -765,20 +765,12 @@ Let us demonstrate one more application of the exponential map.
   $xi in frak(g)$, i.e. the diagram
   $
     #cd(
-      (
-        A: (0, 0, $frak(g)$),
-        B: (0, 1, $frak(h)$),
-        C: (1, 0, $G$),
-        D: (1, 1, $H$),
-      ),
-      (
-        ar("A", "B", label: $phi$),
-        ar("A", "C", label: $exp$, side: "right"),
-        ar("B", "D", label: $exp$),
-        ar("C", "D", label: $f$, side: "right"),
-      ),
-      column: 24mm,
-      row: 22mm,
+      cell-size: (24mm, 22mm),
+      $frak(g) & frak(h) \ G & H$,
+      edge((0, 0), "r", $phi$, "->"),
+      edge((0, 0), "d", $exp$, "->", label-side: right),
+      edge((1, 0), "d", $exp$, "->", label-side: left),
+      edge((0, 1), "r", $f$, "->", label-side: right),
     )
   $
   is commutative. Proposition~@prop:exp-local-diffeomorphism and
@@ -787,15 +779,12 @@ Let us demonstrate one more application of the exponential map.
   differentiable at any point $g in G$ because the diagram
   $
     #cd(
-      (A: (0, 0, $G$), B: (0, 1, $H$), C: (1, 0, $G$), D: (1, 1, $H$)),
-      (
-        ar("A", "B", label: $f$),
-        ar("A", "C", label: $l(g)$),
-        ar("B", "D", label: $l(h)$),
-        ar("C", "D", label: $f$),
-      ),
-      column: 24mm,
-      row: 22mm,
+      cell-size: (24mm, 22mm),
+      $G & H \ G & H$,
+      edge((0, 0), "r", $f$, "->"),
+      edge((0, 0), "d", $l(g)$, "->", label-side: left),
+      edge((1, 0), "d", $l(h)$, "->", label-side: left),
+      edge((0, 1), "r", $f$, "->"),
     )
   $
   where $h = f(g)$ is commutative. The theorem is proved.]

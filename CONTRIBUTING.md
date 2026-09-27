@@ -5,7 +5,7 @@
 Install Typst 0.15.1, Typstyle 0.15.1, Tinymist 0.15.8, Python 3.14, uv and
 just (the Typst tool versions and their Linux builds are pinned in
 `config/project.json`). The fonts and their licences are in `assets/fonts`;
-CeTZ 0.5.2 is fetched by Typst on the first build.
+CeTZ 0.5.2 and fletcher 0.5.8 are fetched by Typst on the first build.
 
 ```sh
 uv sync --locked
@@ -204,9 +204,14 @@ not printed as a list, and a note cites a work in full,
   `$B_l, quad l >= 2$`.
 - A block matrix with the sizes of its blocks: `bordered(, p, q; p, X_1, Y;
   q, Y^T, X_2)`. Systems with a brace: `cases(…)`.
-- Commutative diagrams: `#import "diagrams/cd.typ": ar, cd`, inside a
-  display `$ #cd(…) $` (dotted arrows for rational maps, `shift:` for
-  parallel arrows). Dynkin, extended, Kac and Satake diagrams:
+- Commutative diagrams are drawn by fletcher 0.5.8,
+  `#import "diagrams/commutative.typ": cd, edge`, inside a display: the grid
+  of the objects as in tikz-cd, `$G & H \ G & H$`, then the arrows, each
+  from the cell of its object in a direction,
+  `edge((0, 0), "d", $l(g)$, "->", label-side: right)`. `cd` holds the
+  book's style and is described at the top of the file: dotted arrows
+  `"..>"` for rational maps, `shift:` for parallel arrows, `node` calls for
+  an object off the grid. Dynkin, extended, Kac and Satake diagrams:
   `diagrams/dynkin.typ` (described at the top of the file). A diagram is
   drawn from its admissible system of vectors, `system("B", 5)` (the simple
   roots of Table 1) or `affine("A", 11, k: 2)` (the affine diagram

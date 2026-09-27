@@ -1,7 +1,7 @@
 // Chapter 1, § 1. Background. Printed pages 1-19.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/cd.typ": ar, cd
+#import "diagrams/commutative.typ": cd, edge
 
 == Background <sec:lie-groups-background>
 
@@ -509,14 +509,11 @@ trivial bundle with the fibre isomorphic to $Z$ over each of these subsets.
 #problem[If a quotient map $p$ enters the commutative triangle
   $
     #cd(
-      (X: (0, 0, $X$), Y: (0, 2, $Y$), Z: (1, 1, $Z$)),
-      (
-        ar("X", "Y", label: $p$),
-        ar("X", "Z", label: $q$, side: "right"),
-        ar("Y", "Z", label: $phi$),
-      ),
-      column: 14mm,
-      row: 15mm,
+      cell-size: (14mm, 15mm),
+      $X & & Y \ & Z$,
+      edge((0, 0), "rr", $p$, "->"),
+      edge((0, 0), "dr", $q$, "->", label-side: right),
+      edge((2, 0), "dl", $phi$, "->", label-side: left),
     )
   $
   where $Z$ is a differentiable manifold and $q$ is a differentiable map, then
@@ -593,21 +590,13 @@ such that $p$ is a factorization with respect to this structure.
   which enters the commutative diagram
   $
     #cd(
-      (
-        A: (0, 0, $G times G$),
-        B: (0, 1, $G$),
-        C: (1, 0, $G times G\/H$),
-        D: (1, 1, $G\/H$),
-      ),
-      (
-        ar("A", "B", label: $mu$),
-        ar("A", "C", label: $id times p$, side: "right"),
-        ar("A", "D", label: $q$, side: "right"),
-        ar("B", "D", label: $p$),
-        ar("C", "D", label: $lambda$),
-      ),
-      column: 32mm,
-      row: 24mm,
+      cell-size: (32mm, 24mm),
+      $G times G & G \ G times G\/H & G\/H$,
+      edge((0, 0), "r", $mu$, "->"),
+      edge((0, 0), "d", $id times p$, "->", label-side: right),
+      edge((0, 0), "dr", $q$, "->", label-side: right),
+      edge((1, 0), "d", $p$, "->", label-side: left),
+      edge((0, 1), "r", $lambda$, "->"),
     )
   $
   where $mu$ is the multiplication in $G$. The map $id times p$ is a locally
@@ -619,21 +608,13 @@ such that $p$ is a factorization with respect to this structure.
   Similarly, from the commutative diagram
   $
     #cd(
-      (
-        A: (0, 0, $G times G$),
-        B: (0, 1, $G$),
-        C: (1, 0, $G\/H times G\/H$),
-        D: (1, 1, $G\/H$),
-      ),
-      (
-        ar("A", "B", label: $mu$),
-        ar("A", "C", label: $p times p$, side: "right"),
-        ar("A", "D"),
-        ar("B", "D", label: $p$),
-        ar("C", "D", label: $mu_H$),
-      ),
-      column: 32mm,
-      row: 24mm,
+      cell-size: (32mm, 24mm),
+      $G times G & G \ G\/H times G\/H & G\/H$,
+      edge((0, 0), "r", $mu$, "->"),
+      edge((0, 0), "d", $p times p$, "->", label-side: right),
+      edge((0, 0), "dr", "->"),
+      edge((1, 0), "d", $p$, "->", label-side: left),
+      edge((0, 1), "r", $mu_H$, "->"),
     )
   $
   we deduce the differentiability of the multiplication $mu_H$ in the quotient
@@ -669,14 +650,11 @@ commutative triangle
 #source(27)
 $
   #cd(
-    (G: (0, 0, $G$), X: (1, 1, $X$), Q: (2, 0, $G\/G_x$)),
-    (
-      ar("G", "X", label: $alpha_x$),
-      ar("G", "Q", label: $p$, side: "right"),
-      ar("Q", "X", label: $beta_x$, side: "right"),
-    ),
-    column: 24mm,
-    row: 10mm,
+    cell-size: (24mm, 10mm),
+    $G \ & X \ G\/G_x$,
+    edge((0, 0), "dr", $alpha_x$, "->", label-side: left),
+    edge((0, 0), "dd", $p$, "->", label-side: right),
+    edge((0, 2), "ur", $beta_x$, "->", label-side: right),
   )
 $ <eq:orbit-map-factorization>
 where $beta_x$ is a bijection commuting with the $G$-action.
@@ -1003,15 +981,12 @@ subgroup of invertible diagonal matrices.
   #hint[@pr:orbit-map-constant-rank][Use the commutative diagram
     $
       #cd(
-        (A: (0, 0, $G$), B: (0, 1, $X$), C: (1, 0, $G$), D: (1, 1, $X$)),
-        (
-          ar("A", "B", label: $alpha_x$),
-          ar("A", "C", label: $l(g)$, side: "right"),
-          ar("B", "D", label: $alpha(g)$),
-          ar("C", "D", label: $alpha_x$),
-        ),
-        column: 26mm,
-        row: 22mm,
+        cell-size: (26mm, 22mm),
+        $G & X \ G & X$,
+        edge((0, 0), "r", $alpha_x$, "->"),
+        edge((0, 0), "d", $l(g)$, "->", label-side: right),
+        edge((1, 0), "d", $alpha(g)$, "->", label-side: left),
+        edge((0, 1), "r", $alpha_x$, "->"),
       )
     $]
 
@@ -1075,14 +1050,11 @@ subgroup of invertible diagonal matrices.
     diagram
     $
       #cd(
-        (A: (0, 0, $G times X$), B: (0, 1, $X$), C: (1, 0, $G\/N times X$)),
-        (
-          ar("A", "B"),
-          ar("A", "C", label: $p times id$, side: "right"),
-          ar("C", "B"),
-        ),
-        column: 30mm,
-        row: 22mm,
+        cell-size: (30mm, 22mm),
+        $G times X & X \ G\/N times X$,
+        edge((0, 0), "r", "->"),
+        edge((0, 0), "d", $p times id$, "->", label-side: right),
+        edge((0, 1), "ur", "->"),
       )
     $
     where the horizontal arrow is the map defined by the given $G$-action on $X$
