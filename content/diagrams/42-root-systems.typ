@@ -1,26 +1,24 @@
 // Fig. 1 of Chapter 4, § 2 (page 154): the root systems of rank 1 and 2 in
-// CeTZ. Every root is drawn from its length and direction, so the angles
-// and the ratios of lengths are exact. The printed figure gives only the
-// unit length, the centres of the seven pictures and the sides of the
-// labels (in millimetres of the printed page; the canvas enlarges them
-// with our larger type).
+// CeTZ. Each system is given by its simple roots (Table 1, and their sums
+// and doubles, dynkin.typ); its roots are their orbit under the simple
+// reflections, checked against the axioms of a root system, and are drawn
+// from the lengths of the simple roots and the angle between them. The
+// printed figure gives only the view: the unit length (the shortest root),
+// the centres of the seven pictures, the direction of α_1 and the side of
+// α_2, and the sides of the labels (in millimetres of the printed page; the
+// canvas enlarges them with our larger type).
 #import "@preview/cetz:0.5.2"
+#import "dynkin.typ": direct-sum, roots, system
 
-// A root of `length` (in units of the shortest root) at `angle`. Its `label`
-// is set by the arrowhead (by the tip with `tip: true`); `at` is the side of
-// the label that faces it.
-#let root(length, angle, label: none, at: "south", tip: false) = (
-  length: length,
-  angle: angle,
-  label: label,
+// The label of the root with coefficients `k` over the simple roots, set by
+// its arrowhead (by the tip with `tip: true`); `at` is the side of the label
+// that faces it.
+#let root-label(k, body, at: "south", tip: false) = (
+  k: k,
+  body: body,
   at: at,
   tip: tip,
 )
-
-// The roots ±v of each vector v; the labels go with v.
-#let pairs(..roots) = {
-  roots.pos().map(r => (r, root(r.length, r.angle + 180deg))).flatten()
-}
 
 #let rank-two-root-systems = cetz.canvas(length: 1.2mm, {
   import cetz.draw: *
@@ -32,79 +30,146 @@
     content: (padding: 1),
   )
 
-  // One picture: the roots drawn from `centre`, a tick at the origin of a
-  // line, the name of the system to the right of its farthest root.
-  let system(centre, name, roots, tick: false, name-at: none) = group({
+  // One picture: the roots of `s` drawn from `centre`, α_1 in the direction
+  // `turn`, α_2 on the side `sense` of it (1 counterclockwise), a tick at
+  // the origin of a line, the name of the system to the right of its
+  // farthest root.
+  let picture(
+    centre,
+    name,
+    s,
+    turn: 0deg,
+    sense: 1,
+    labels: (),
+    tick: false,
+    name-at: none,
+  ) = group({
     set-origin(centre)
-    for r in roots {
-      let end = r.length * unit
-      line((0, 0), (r.angle, end))
-      if r.label != none {
-        let at = if r.tip { end } else { end - head / 2 }
-        content((r.angle, at), r.label, anchor: r.at)
+    let g = s.gram
+    let n = g.len()
+    let product(x, y) = range(n)
+      .map(i => range(n).map(j => x.at(i) * y.at(j) * g.at(i).at(j)).sum())
+      .sum()
+    let found = roots(s)
+    // The axioms: r_γ(β) = β - ⟨β|γ⟩γ is a root, ⟨β|γ⟩ is an integer.
+    for beta in found {
+      for gamma in found {
+        let pairing = 2 * product(beta, gamma) / product(gamma, gamma)
+        assert(
+          calc.abs(pairing - calc.round(pairing)) < 1e-9,
+          message: "⟨β|γ⟩ is not an integer",
+        )
+        let image = beta
+          .zip(gamma)
+          .map(((b, c)) => b - int(calc.round(pairing)) * c)
+        assert(image in found, message: "Δ is not closed under reflections")
       }
+    }
+    // The simple roots in the plane, the shortest root `unit` long.
+    let stretch = unit / calc.sqrt(calc.min(..found.map(k => product(k, k))))
+    let directions = (turn,)
+    if n == 2 {
+      let cosine = g.at(0).at(1) / calc.sqrt(g.at(0).at(0) * g.at(1).at(1))
+      directions.push(turn + sense * calc.acos(cosine))
+    }
+    let simple = directions
+      .enumerate()
+      .map(((i, a)) => {
+        let length = calc.sqrt(g.at(i).at(i)) * stretch
+        (length * calc.cos(a), length * calc.sin(a))
+      })
+    let point(k) = (0, 1).map(c => range(n)
+      .map(i => k.at(i) * simple.at(i).at(c))
+      .sum())
+    for k in found {
+      line((0, 0), point(k))
+    }
+    for l in labels {
+      let (x, y) = point(l.k)
+      let length = calc.sqrt(x * x + y * y)
+      let at = if l.tip { 1 } else { 1 - head / 2 / length }
+      content((x * at, y * at), l.body, anchor: l.at)
     }
     if tick {
       line((0, -0.8), (0, 0.8), mark: none)
     }
-    let reach = calc.max(..roots.map(r => r.length * calc.cos(r.angle)))
-    let place = if name-at == none { (reach * unit + 3.5, 4.3) } else {
-      name-at
-    }
-    content(place, name, anchor: "west")
+    let reach = calc.max(..found.map(k => point(k).at(0)))
+    content(
+      if name-at == none { (reach + 3.5, 4.3) } else { name-at },
+      name,
+      anchor: "west",
+    )
   })
 
-  let (s2, s3) = (calc.sqrt(2), calc.sqrt(3))
-
-  system(
+  picture(
     (20.2, -9.5),
     $A_1$,
+    system("A", 1),
     tick: true,
-    (
-      root(1, 0deg, label: $alpha$),
-      root(1, 180deg, label: $-alpha$),
+    labels: (
+      root-label((1,), $alpha$),
+      root-label((-1,), $-alpha$),
     ),
   )
-  system(
+  picture(
     (68.9, -9.5),
     $B C_1$,
+    system("BC", 1),
     tick: true,
-    (
-      root(1, 0deg, label: $alpha$),
-      root(2, 0deg, label: $2 alpha$),
-      root(1, 180deg, label: $-alpha$),
-      root(2, 180deg, label: $-2 alpha$),
+    labels: (
+      root-label((1,), $alpha$),
+      root-label((2,), $2 alpha$),
+      root-label((-1,), $-alpha$),
+      root-label((-2,), $-2 alpha$),
     ),
   )
-  system((14.7, -22.1), $A_1 + A_1$, name-at: (6.4, 7.8), pairs(
-    root(1, 0deg, label: $alpha_1$),
-    root(1, 90deg, label: $alpha_2$, at: "east"),
-  ))
-  system((45.4, -22.1), $A_2$, pairs(
-    root(1, 0deg, label: $alpha_1$),
-    root(1, 60deg),
-    root(1, 120deg, label: $alpha_2$, at: "east"),
-  ))
-  system((76.3, -22.1), $B_2$, pairs(
-    root(1, 0deg, label: $alpha_2$, tip: true),
-    root(1, 90deg),
-    root(s2, 45deg),
-    root(s2, 135deg, label: $alpha_1$, at: "north-east"),
-  ))
-  system((27.4, -40.4), $G_2$, pairs(
-    root(1, 0deg, label: $alpha_1$, at: "west", tip: true),
-    root(1, 60deg),
-    root(1, 120deg),
-    root(s3, 30deg),
-    root(s3, 90deg),
-    root(s3, 150deg, label: $alpha_2$, at: "north"),
-  ))
-  system((63.2, -40.4), $B C_2$, pairs(
-    root(s2, 0deg, label: $alpha_1$),
-    root(s2, 90deg),
-    root(1, 45deg),
-    root(2, 45deg),
-    root(1, 135deg, label: $alpha_2$, at: "east"),
-    root(2, 135deg, label: $2 alpha_2$, at: "east"),
-  ))
+  picture(
+    (14.7, -22.1),
+    $A_1 + A_1$,
+    direct-sum(system("A", 1), system("A", 1)),
+    name-at: (6.4, 7.8),
+    labels: (
+      root-label((1, 0), $alpha_1$),
+      root-label((0, 1), $alpha_2$, at: "east"),
+    ),
+  )
+  picture(
+    (45.4, -22.1),
+    $A_2$,
+    system("A", 2),
+    labels: (
+      root-label((1, 0), $alpha_1$),
+      root-label((0, 1), $alpha_2$, at: "east"),
+    ),
+  )
+  picture(
+    (76.3, -22.1),
+    $B_2$,
+    system("B", 2),
+    turn: 135deg,
+    sense: -1,
+    labels: (
+      root-label((0, 1), $alpha_2$, tip: true),
+      root-label((1, 0), $alpha_1$, at: "north-east"),
+    ),
+  )
+  picture(
+    (27.4, -40.4),
+    $G_2$,
+    system("G", 2),
+    labels: (
+      root-label((1, 0), $alpha_1$, at: "west", tip: true),
+      root-label((0, 1), $alpha_2$, at: "north"),
+    ),
+  )
+  picture(
+    (63.2, -40.4),
+    $B C_2$,
+    system("BC", 2),
+    labels: (
+      root-label((1, 0), $alpha_1$),
+      root-label((0, 1), $alpha_2$, at: "east"),
+      root-label((0, 2), $2 alpha_2$, at: "east"),
+    ),
+  )
 })

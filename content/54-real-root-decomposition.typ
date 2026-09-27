@@ -3,7 +3,7 @@
 // source-page anchor. Chapter 6 begins on page 282.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/dynkin.typ": bond, dynkin, gap, pair, v
+#import "diagrams/dynkin.typ": double, dynkin, system, v
 
 == Real Root Decomposition <sec:real-root-decomposition>
 
@@ -356,28 +356,18 @@ joined by arrows.
   vertices and is of the form
   $
     #dynkin(
+      double(system("A", 5)),
       (
-        a1: v(0, 1),
-        a2: v(1, 1),
-        a3: v(3, 1),
-        a4: v(4, 1),
-        b1: v(0, 0),
-        b2: v(1, 0),
-        b3: v(3, 0),
-        b4: v(4, 0),
+        "1": v(0, 1),
+        "2": v(1, 1),
+        "4": v(3, 1),
+        "5": v(4, 1),
+        "6": v(0, 0),
+        "7": v(1, 0),
+        "9": v(3, 0),
+        "10": v(4, 0),
       ),
-      (
-        bond("a1", "a2", 1),
-        gap("a2", "a3"),
-        bond("a3", "a4", 1),
-        bond("b1", "b2", 1),
-        gap("b2", "b3"),
-        bond("b3", "b4", 1),
-        pair("a1", "b1"),
-        pair("a2", "b2"),
-        pair("a3", "b3"),
-        pair("a4", "b4"),
-      ),
+      omega: "symmetry",
     )
   $
   #source(289)In fact, consider a compact real form $frak(u) subset frak(g)$. If

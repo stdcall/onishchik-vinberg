@@ -3,7 +3,7 @@
 // 42-root-systems.typ.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/dynkin.typ": bond, dynkin, gap, v
+#import "diagrams/dynkin.typ": affine, direct-sum, dual, dynkin, join, system, v
 
 === Dynkin Diagrams <ss:dynkin-diagrams>
 #source(179)Let $Gamma = {gamma_1, ..., gamma_s}$ be a system of nonzero vectors
@@ -101,35 +101,23 @@ systems described in Fig.~@fig:rank-one-two-root-systems are of the form
     bottom: if y == 0 { 0.5pt },
   ),
   $A_1, B C_1$, $A_1 + A_1$, $A_2$, $B_2, B C_2$, $G_2$,
-  dynkin((a: v(0, 0, label: $alpha$, at: "below")), ()),
-  dynkin(
-    (
-      a: v(0, 0, label: $alpha_1$, at: "below"),
-      b: v(1, 0, label: $alpha_2$, at: "below"),
-    ),
-    (),
-  ),
-  dynkin(
-    (
-      a: v(0, 0, label: $alpha_1$, at: "below"),
-      b: v(1, 0, label: $alpha_2$, at: "below"),
-    ),
-    (bond("a", "b", 1),),
-  ),
-  dynkin(
-    (
-      a: v(0, 0, label: $alpha_1$, at: "below"),
-      b: v(1, 0, label: $alpha_2$, at: "below"),
-    ),
-    (bond("a", "b", 2, to: "b"),),
-  ),
-  dynkin(
-    (
-      a: v(0, 0, label: $alpha_1$, at: "below"),
-      b: v(1, 0, label: $alpha_2$, at: "below"),
-    ),
-    (bond("a", "b", 3, to: "a"),),
-  ),
+  dynkin(system("A", 1), ("1": v(0, 0, label: $alpha$, at: "below"))),
+  dynkin(direct-sum(system("A", 1), system("A", 1)), (
+    "1": v(0, 0, label: $alpha_1$, at: "below"),
+    "2": v(1, 0, label: $alpha_2$, at: "below"),
+  )),
+  dynkin(system("A", 2), (
+    "1": v(0, 0, label: $alpha_1$, at: "below"),
+    "2": v(1, 0, label: $alpha_2$, at: "below"),
+  )),
+  dynkin(system("B", 2), (
+    "1": v(0, 0, label: $alpha_1$, at: "below"),
+    "2": v(1, 0, label: $alpha_2$, at: "below"),
+  )),
+  dynkin(system("G", 2), (
+    "1": v(0, 0, label: $alpha_1$, at: "below"),
+    "2": v(1, 0, label: $alpha_2$, at: "below"),
+  )),
 )
 
 _Example_ #eg <exm:classical-dynkin-diagrams> The Dynkin diagrams of the
@@ -145,56 +133,44 @@ $
     row-gutter: 1.2em,
     align: left + horizon,
     $frak(s l)_(l+1) (CC), l >= 1$,
-    dynkin(
-      (
-        a: v(0, 0, label: $alpha_1$),
-        b: v(1, 0, label: $alpha_2$),
-        c: v(3, 0, label: $alpha_(l-1)$),
-        d: v(4, 0, label: $alpha_l$),
-      ),
-      (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 1)),
-    ),
+    dynkin(system("A", 5), (
+      "1": v(0, 0, label: $alpha_1$),
+      "2": v(1, 0, label: $alpha_2$),
+      "4": v(3, 0, label: $alpha_(l-1)$),
+      "5": v(4, 0, label: $alpha_l$),
+    )),
     $A_l$,
 
     $frak(s o)_(2l+1) (CC), l >= 2$,
-    dynkin(
-      (
-        a: v(0, 0, label: $alpha_1$),
-        b: v(1, 0, label: $alpha_2$),
-        c: v(3, 0, label: $alpha_(l-1)$),
-        d: v(4, 0, label: $alpha_l$),
-      ),
-      (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 2, to: "d")),
-    ),
+    dynkin(system("B", 5), (
+      "1": v(0, 0, label: $alpha_1$),
+      "2": v(1, 0, label: $alpha_2$),
+      "4": v(3, 0, label: $alpha_(l-1)$),
+      "5": v(4, 0, label: $alpha_l$),
+    )),
     $B_l$,
 
     $frak(s o)_3 (CC)$,
-    dynkin((a: v(0, 0, label: $alpha_1$)), ()),
+    dynkin(system("A", 1), ("1": v(0, 0, label: $alpha_1$))),
     $A_1 (= B_1 = C_1)$,
 
     $frak(s o)_(2l) (CC), l >= 3$,
-    dynkin(
-      (
-        a: v(0, 0, label: $alpha_1$),
-        b: v(1, 0, label: $alpha_2$),
-        c: v(3, 0, label: $alpha_(l-2)$, at: "north-west"),
-        d: v(4, 0.5, label: $alpha_(l-1)$),
-        e: v(4, -0.5, label: $alpha_l$, at: "below"),
-      ),
-      (bond("a", "b"), gap("b", "c"), bond("c", "d"), bond("c", "e")),
-    ),
+    dynkin(system("D", 6), (
+      "1": v(0, 0, label: $alpha_1$),
+      "2": v(1, 0, label: $alpha_2$),
+      "4": v(3, 0, label: $alpha_(l-2)$, at: "north-west"),
+      "5": v(4, 0.5, label: $alpha_(l-1)$),
+      "6": v(4, -0.5, label: $alpha_l$, at: "below"),
+    )),
     $D_l$,
 
     $frak(s p)_(2l) (CC), l >= 2$,
-    dynkin(
-      (
-        a: v(0, 0, label: $alpha_1$),
-        b: v(1, 0, label: $alpha_2$),
-        c: v(3, 0, label: $alpha_(l-1)$),
-        d: v(4, 0, label: $alpha_l$, at: "below"),
-      ),
-      (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 2, to: "c")),
-    ),
+    dynkin(system("C", 5), (
+      "1": v(0, 0, label: $alpha_1$),
+      "2": v(1, 0, label: $alpha_2$),
+      "4": v(3, 0, label: $alpha_(l-1)$),
+      "5": v(4, 0, label: $alpha_l$, at: "below"),
+    )),
     $C_l$,
   )
 $
@@ -253,89 +229,53 @@ the extended Dynkin diagram of $G$_ (or $frak(g)$).
       row-gutter: 1.2em,
       align: left + horizon,
       $frak(s l)_(l+1) (CC), l >= 2$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0),
-          o: v(2, 1, label: $alpha_0$),
-        ),
-        (
-          bond("a", "b", 1),
-          gap("b", "c"),
-          bond("c", "d", 1),
-          bond("o", "a", 1),
-          bond("o", "d", 1),
-        ),
-      ),
+      dynkin(affine("A", 5), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+        "0": v(2, 1, label: $alpha_0$),
+      )),
       $A_l^((1))$,
 
       $frak(s l)_2 (CC)$,
-      dynkin(
-        (a: v(0, 0, label: $alpha_0$, at: "left"), b: v(1, 0)),
-        (bond("a", "b", 4),),
-      ),
+      dynkin(affine("A", 1), (
+        "0": v(0, 0, label: $alpha_0$, at: "left"),
+        "1": v(1, 0),
+      )),
       $A_1^((1))$,
 
       $frak(s o)_(2l+1) (CC), l >= 3$,
-      dynkin(
-        (
-          o: v(0, 0.5, label: $alpha_0$, at: "left"),
-          a: v(0, -0.5),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(4, 0),
-          e: v(5, 0),
-        ),
-        (
-          bond("o", "b", 1),
-          bond("a", "b", 1),
-          bond("b", "c", 1),
-          gap("c", "d"),
-          bond("d", "e", 2, to: "e"),
-        ),
-      ),
+      dynkin(affine("B", 6), (
+        "0": v(0, 0.5, label: $alpha_0$, at: "left"),
+        "1": v(0, -0.5),
+        "2": v(1, 0),
+        "3": v(2, 0),
+        "5": v(4, 0),
+        "6": v(5, 0),
+      )),
       $B_l^((1))$,
 
       $frak(s o)_(2l) (CC), l >= 4$,
-      dynkin(
-        (
-          o: v(0, 0.5, label: $alpha_0$, at: "left"),
-          a: v(0, -0.5),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(4, 0),
-          e: v(5, 0.5),
-          f: v(5, -0.5),
-        ),
-        (
-          bond("o", "b", 1),
-          bond("a", "b", 1),
-          bond("b", "c", 1),
-          gap("c", "d"),
-          bond("d", "e", 1),
-          bond("d", "f", 1),
-        ),
-      ),
+      dynkin(affine("D", 7), (
+        "0": v(0, 0.5, label: $alpha_0$, at: "left"),
+        "1": v(0, -0.5),
+        "2": v(1, 0),
+        "3": v(2, 0),
+        "5": v(4, 0),
+        "6": v(5, 0.5),
+        "7": v(5, -0.5),
+      )),
       $D_l^((1))$,
 
       $frak(s p)_(2l) (CC), l >= 2$,
-      dynkin(
-        (
-          o: v(0, 0, label: $alpha_0$, at: "left"),
-          a: v(1, 0),
-          b: v(3, 0),
-          c: v(4, 0),
-          d: v(5, 0),
-        ),
-        (
-          bond("o", "a", 2, to: "a"),
-          gap("a", "b"),
-          bond("b", "c", 1),
-          bond("c", "d", 2, to: "c"),
-        ),
-      ),
+      dynkin(affine("C", 5), (
+        "0": v(0, 0, label: $alpha_0$, at: "left"),
+        "1": v(1, 0),
+        "3": v(3, 0),
+        "4": v(4, 0),
+        "5": v(5, 0),
+      )),
       $C_l^((1))$,
     )
   $
@@ -345,14 +285,11 @@ the extended Dynkin diagram of $G$_ (or $frak(g)$).
     columns: (1fr, auto, 1fr),
     align: (center, center + horizon, right + horizon),
     [],
-    dynkin(
-      (
-        a: v(0, 0),
-        b: v(1, 0),
-        o: v(2, 0, label: $alpha_0$, at: "right"),
-      ),
-      (bond("a", "b", 3, to: "a"), bond("b", "o", 1)),
-    ),
+    dynkin(affine("G", 2), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "0": v(2, 0, label: $alpha_0$, at: "right"),
+    )),
     $G_2^((1)).$,
   )] <exm:extended-dynkin-diagrams-classical>
 
@@ -367,48 +304,27 @@ the extended Dynkin diagram of $G$_ (or $frak(g)$).
       row-gutter: 1.2em,
       align: left + horizon,
       $A_(2l-1)^((2)), l >= 3$,
-      dynkin(
-        (
-          o: v(0, 0.5),
-          a: v(0, -0.5),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(4, 0),
-          e: v(5, 0),
-        ),
-        (
-          bond("o", "b", 1),
-          bond("a", "b", 1),
-          bond("b", "c", 1),
-          gap("c", "d"),
-          bond("d", "e", 2, to: "d"),
-        ),
-      ),
+      dynkin(affine("A", 11, k: 2), (
+        "0": v(0, 0.5),
+        "1": v(0, -0.5),
+        "2": v(1, 0),
+        "3": v(2, 0),
+        "5": v(4, 0),
+        "6": v(5, 0),
+      )),
 
       $D_(l+1)^((2)), l >= 2$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(4, 0),
-          e: v(5, 0),
-          f: v(6, 0),
-        ),
-        (
-          bond("a", "b", 2, to: "a"),
-          bond("b", "c", 1),
-          gap("c", "d"),
-          bond("d", "e", 1),
-          bond("e", "f", 2, to: "f"),
-        ),
-      ),
+      dynkin(affine("D", 7, k: 2), (
+        "0": v(0, 0),
+        "1": v(1, 0),
+        "2": v(2, 0),
+        "4": v(4, 0),
+        "5": v(5, 0),
+        "6": v(6, 0),
+      )),
 
       $D_4^((3))$,
-      dynkin(
-        (a: v(0, 0), b: v(1, 0), c: v(2, 0)),
-        (bond("a", "b", 1), bond("b", "c", 3, to: "b")),
-      ),
+      dynkin(affine("D", 4, k: 3), ("0": v(0, 0), "1": v(1, 0), "2": v(2, 0))),
     )
   $
   #source(182)It is easy to verify that these diagrams also correspond to
@@ -432,23 +348,14 @@ the extended Dynkin diagram of $G$_ (or $frak(g)$).
       column-gutter: 2.5em,
       align: left + horizon,
       $A_(2l)^((2)), l >= 2$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(4, 0),
-          e: v(5, 0),
-          f: v(6, 0),
-        ),
-        (
-          bond("a", "b", 2, to: "b"),
-          bond("b", "c", 1),
-          gap("c", "d"),
-          bond("d", "e", 1),
-          bond("e", "f", 2, to: "f"),
-        ),
-      ),
+      dynkin(affine("A", 12, k: 2), (
+        "0": v(0, 0),
+        "1": v(1, 0),
+        "2": v(2, 0),
+        "4": v(4, 0),
+        "5": v(5, 0),
+        "6": v(6, 0),
+      )),
     )
   $
   and the adjoined vector corresponds to the left-end vertex of the
@@ -655,9 +562,9 @@ with cycles.
       column-gutter: (1.5em, 4em, 1.5em),
       align: horizon,
       $A_1^((1)):$,
-      dynkin((a: v(0, 0), b: v(1, 0)), (bond("a", "b", 4),)),
+      dynkin(affine("A", 1), ("0": v(0, 0), "1": v(1, 0))),
       $A_2^((2)):$,
-      dynkin((a: v(0, 0), b: v(1, 0)), (bond("a", "b", 4, to: "b"),)),
+      dynkin(affine("A", 2, k: 2), ("0": v(0, 0), "1": v(1, 0))),
     )
   $] <pr:dynkin-diagrams-rank-one-two>
 
@@ -737,21 +644,20 @@ $
     columns: 3,
     column-gutter: 4em,
     align: horizon,
-    dynkin(
-      (a: v(0, 0), b: v(1, 0), c: v(2, 0), d: v(3, 0), e: v(4, 0), f: v(2, -1)),
-      (
-        bond("a", "b", 1),
-        bond("b", "c", 1),
-        bond("c", "d", 1),
-        bond("d", "e", 1),
-        bond("c", "f", 1),
-      ),
-    ),
+    dynkin(system("E", 6), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "3": v(2, 0),
+      "4": v(3, 0),
+      "5": v(4, 0),
+      "6": v(2, -1),
+    )),
     "or",
-    dynkin((a: v(0, 0), b: v(1, 0), c: v(2, 0), d: v(3, 0)), (
-      bond("a", "b", 1),
-      bond("b", "c", 2, to: "b"),
-      bond("c", "d", 1),
+    dynkin(system("F", 4), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "3": v(2, 0),
+      "4": v(3, 0),
     )),
   )
 $
@@ -766,49 +672,35 @@ $
     row-gutter: 1.2em,
     align: left + horizon,
     $E_l, l >= 6:$,
-    dynkin(
-      (
-        a: v(0, 0),
-        b: v(1, 0),
-        c: v(2, 0),
-        d: v(3, 0),
-        e: v(5, 0),
-        f: v(6, 0),
-        p: v(2, -1),
-      ),
-      (
-        bond("a", "b", 1),
-        bond("b", "c", 1),
-        bond("c", "d", 1),
-        gap("d", "e"),
-        bond("e", "f", 1),
-        bond("c", "p", 1),
-      ),
-    ),
+    dynkin(join(system("E", 6), system("A", 2), "5", "1"), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "3": v(2, 0),
+      "4": v(3, 0),
+      "7": v(5, 0),
+      "8": v(6, 0),
+      "6": v(2, -1),
+    )),
 
     $F_l, l >= 4:$,
-    dynkin(
-      (a: v(0, 0), b: v(1, 0), c: v(2, 0), d: v(3, 0), e: v(5, 0), f: v(6, 0)),
-      (
-        bond("a", "b", 1),
-        bond("b", "c", 2, to: "b"),
-        bond("c", "d", 1),
-        gap("d", "e"),
-        bond("e", "f", 1),
-      ),
-    ),
+    dynkin(join(system("F", 4), system("A", 3), "4", "1"), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "3": v(2, 0),
+      "4": v(3, 0),
+      "6": v(5, 0),
+      "7": v(6, 0),
+    )),
 
     $F_l^or, l >= 4:$,
-    dynkin(
-      (a: v(0, 0), b: v(1, 0), c: v(2, 0), d: v(3, 0), e: v(5, 0), f: v(6, 0)),
-      (
-        bond("a", "b", 1),
-        bond("b", "c", 2, to: "c"),
-        bond("c", "d", 1),
-        gap("d", "e"),
-        bond("e", "f", 1),
-      ),
-    ),
+    dynkin(dual(join(system("F", 4), system("A", 3), "4", "1")), (
+      "1": v(0, 0),
+      "2": v(1, 0),
+      "3": v(2, 0),
+      "4": v(3, 0),
+      "6": v(5, 0),
+      "7": v(6, 0),
+    )),
   )
 $
 Denote by $delta(L)$ the determinant of the admissible matrix with Dynkin
@@ -829,48 +721,27 @@ diagram $L$.
       row-gutter: 1.5em,
       align: (left + top, left + top),
       $E_6^((1)):$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(3, 0),
-          e: v(4, 0),
-          f: v(2, -1),
-          g: v(2, -2),
-        ),
-        (
-          bond("a", "b", 1),
-          bond("b", "c", 1),
-          bond("c", "d", 1),
-          bond("d", "e", 1),
-          bond("c", "f", 1),
-          bond("f", "g", 1),
-        ),
-      ),
+      dynkin(affine("E", 6), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "3": v(2, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+        "6": v(2, -1),
+        "0": v(2, -2),
+      )),
 
       $E_7^((1)):$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(3, 0),
-          e: v(4, 0),
-          f: v(5, 0),
-          g: v(6, 0),
-          p: v(3, -1),
-        ),
-        (
-          bond("a", "b", 1),
-          bond("b", "c", 1),
-          bond("c", "d", 1),
-          bond("d", "e", 1),
-          bond("e", "f", 1),
-          bond("f", "g", 1),
-          bond("d", "p", 1),
-        ),
-      ),
+      dynkin(affine("E", 7), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "3": v(2, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+        "6": v(5, 0),
+        "0": v(6, 0),
+        "7": v(3, -1),
+      )),
     )
   $] <pr:affine-diagrams-e6-e7>
 
