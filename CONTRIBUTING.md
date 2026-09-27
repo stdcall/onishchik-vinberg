@@ -207,9 +207,16 @@ not printed as a list, and a note cites a work in full,
 - Commutative diagrams: `#import "diagrams/cd.typ": ar, cd`, inside a
   display `$ #cd(…) $` (dotted arrows for rational maps, `shift:` for
   parallel arrows). Dynkin, extended, Kac and Satake diagrams:
-  `diagrams/dynkin.typ` (`bond, dynkin, gap, pair, v`; described at the top
-  of the file). Other drawings are CeTZ 0.5.2 in `content/diagrams/`, with
-  the geometry derived from a few measured quantities and one style.
+  `diagrams/dynkin.typ` (described at the top of the file). A diagram is
+  drawn from its admissible system of vectors, `system("B", 5)` (the simple
+  roots of Table 1) or `affine("A", 11, k: 2)` (the affine diagram
+  A₁₁⁽²⁾ of Table 6), and a layout of the drawn vertices,
+  `"1": v(0, 0, label: $1$)`: the edges, gaps, arrows of a Satake diagram
+  and labels of Table 6 follow from the system and are never written. A
+  series is drawn from one of its members. The root systems of Fig. 1 are
+  the orbits of their simple roots under the Weyl group. Other drawings
+  are CeTZ 0.5.2 in `content/diagrams/`, with the geometry derived from a
+  few measured quantities and one style.
 
 ## Subject index
 

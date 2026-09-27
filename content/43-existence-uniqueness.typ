@@ -5,7 +5,7 @@
 #import "main-defs.typ": *
 #import "statements.typ": *
 #import "diagrams/cd.typ": ar, cd
-#import "diagrams/dynkin.typ": bond, dynkin, gap, v
+#import "diagrams/dynkin.typ": dynkin, system, v
 
 == Existence and Uniqueness Theorems <sec:existence-uniqueness-theorems>
 
@@ -572,7 +572,9 @@ _Example._ Let $frak(g) = frak(s l)_2 (CC)$. By
 Theorems~@th:highest-weight-representation-exists and
 @th:highest-weight-determines-irreducible there exists a unique up to an
 equivalence irreducible representation $rho_k$ of $frak(g)$ with the diagram
-$ #dynkin((a: v(0, 0, label: $k$)), ()) $ <eq:sl2-representation-diagram>
+$
+  #dynkin(system("A", 1), ("1": v(0, 0, label: $k$)))
+$ <eq:sl2-representation-diagram>
 where $k$ is an arbitrary nonnegative integer. Let $V$ be the space of this
 representation. The highest weight of $rho_k$ is of the form
 $Lambda = k alpha\/2$ where $alpha$ is the positive root of $frak(s l)_2 (CC)$.
@@ -1050,94 +1052,64 @@ by $M$ uniquely up to an equivalence.
       column-gutter: 1.2em,
       row-gutter: 1.2em,
       $A_(4 q + 1)$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0, black: true),
-          d: v(5, 0),
-          e: v(6, 0),
-        ),
-        (bond("a", "b"), gap("b", "c"), gap("c", "d"), bond("d", "e")),
-      ),
+      dynkin(system("A", 9), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "5": v(3, 0, black: true),
+        "8": v(5, 0),
+        "9": v(6, 0),
+      )),
       [(the black vertex is the middle one).],
 
       $B_(4 q + 1), B_(4 q + 2)$,
-      dynkin(
-        (a: v(0, 0), b: v(1, 0), c: v(3, 0), d: v(4, 0, black: true)),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d", 2, to: "d")),
-      ),
+      dynkin(system("B", 5), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0, black: true),
+      )),
       [],
 
       $C_(2 q)$,
-      dynkin(
-        (
-          a: v(0, 0, black: true),
-          b: v(1, 0),
-          c: v(2, 0, black: true),
-          d: v(4, 0, black: true),
-          e: v(5, 0),
-        ),
-        (
-          bond("a", "b"),
-          bond("b", "c"),
-          gap("c", "d"),
-          bond("d", "e", 2, to: "d"),
-        ),
-      ),
+      dynkin(system("C", 6), (
+        "1": v(0, 0, black: true),
+        "2": v(1, 0),
+        "3": v(2, 0, black: true),
+        "5": v(4, 0, black: true),
+        "6": v(5, 0),
+      )),
       [],
 
       $C_(2 q + 1)$,
-      dynkin(
-        (
-          a: v(0, 0, black: true),
-          b: v(1, 0),
-          c: v(2, 0, black: true),
-          d: v(4, 0),
-          e: v(5, 0, black: true),
-        ),
-        (
-          bond("a", "b"),
-          bond("b", "c"),
-          gap("c", "d"),
-          bond("d", "e", 2, to: "d"),
-        ),
-      ),
+      dynkin(system("C", 7), (
+        "1": v(0, 0, black: true),
+        "2": v(1, 0),
+        "3": v(2, 0, black: true),
+        "6": v(4, 0),
+        "7": v(5, 0, black: true),
+      )),
       [],
 
       $D_(4 q + 2)$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0.5, black: true),
-          e: v(4, -0.5, black: true),
-        ),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d"), bond("c", "e")),
-      ),
+      dynkin(system("D", 6), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0.5, black: true),
+        "6": v(4, -0.5, black: true),
+      )),
       [],
 
       $E_7$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(2, 0),
-          d: v(3, 0, black: true),
-          e: v(4, 0),
-          f: v(5, 0, black: true),
-          g: v(2, -1, black: true),
-        ),
-        (
-          bond("a", "b"),
-          bond("b", "c"),
-          bond("c", "d"),
-          bond("d", "e"),
-          bond("e", "f"),
-          bond("c", "g"),
-        ),
-      ),
+      dynkin(system("E", 7), (
+        "6": v(0, 0),
+        "5": v(1, 0),
+        "4": v(2, 0),
+        "3": v(3, 0, black: true),
+        "2": v(4, 0),
+        "1": v(5, 0, black: true),
+        "7": v(2, -1, black: true),
+      )),
       [],
     )] <exc:orthogonal-symplectic-black-vertices>
 
@@ -1234,41 +1206,39 @@ by $M$ uniquely up to an equivalence.
       column-gutter: 2.5em,
       row-gutter: 1.2em,
       [$SL_n (CC)$, $n >= 2$:],
-      dynkin(
-        (a: v(0, 0, label: $1$), b: v(1, 0), c: v(3, 0), d: v(4, 0)),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d")),
-      ),
+      dynkin(system("A", 5), (
+        "1": v(0, 0, label: $1$),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+      )),
 
       [$SO_(2 n + 1) (CC)$, $n >= 2$:],
-      dynkin(
-        (a: v(0, 0, label: $1$), b: v(1, 0), c: v(3, 0), d: v(4, 0)),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d", 2, to: "d")),
-      ),
+      dynkin(system("B", 5), (
+        "1": v(0, 0, label: $1$),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+      )),
 
-      [$SO_3 (CC)$:], dynkin((a: v(0, 0, label: $2$)), ()),
+      [$SO_3 (CC)$:], dynkin(system("B", 1), ("1": v(0, 0, label: $2$))),
 
       [$SO_(2 n) (CC)$, $n >= 3$:],
-      dynkin(
-        (
-          a: v(0, 0, label: $1$),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0.5),
-          e: v(4, -0.5),
-        ),
-        (
-          bond("a", "b"),
-          gap("b", "c"),
-          bond("c", "d"),
-          bond("c", "e"),
-        ),
-      ),
+      dynkin(system("D", 6), (
+        "1": v(0, 0, label: $1$),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0.5),
+        "6": v(4, -0.5),
+      )),
 
       [$Sp_(2 n) (CC)$, $n >= 1$:],
-      dynkin(
-        (a: v(0, 0, label: $1$), b: v(1, 0), c: v(3, 0), d: v(4, 0)),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d", 2, to: "c")),
-      ),
+      dynkin(system("C", 5), (
+        "1": v(0, 0, label: $1$),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0),
+      )),
     )] <exc:identity-representation-diagrams>
 
   #exercise[#source(213)For the indicated values of $p$ the representations
@@ -1279,69 +1249,46 @@ by $M$ uniquely up to an equivalence.
       column-gutter: 2.5em,
       row-gutter: 1.2em,
       [$SL_n (CC)$, $n >= 2$:],
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0, label: $1$),
-          d: v(5, 0),
-          e: v(6, 0),
-        ),
-        (
-          bond("a", "b"),
-          gap("b", "c"),
-          gap("c", "d"),
-          bond("d", "e"),
-        ),
-      ),
+      dynkin(system("A", 7), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0, label: $1$),
+        "6": v(5, 0),
+        "7": v(6, 0),
+      )),
       [$p <= n - 1$,],
 
       [$SO_(2 n + 1) (CC)$, $n >= 2$:],
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0, label: $1$),
-          d: v(5, 0),
-          e: v(6, 0),
-        ),
-        (
-          bond("a", "b"),
-          gap("b", "c"),
-          gap("c", "d"),
-          bond("d", "e", 2, to: "e"),
-        ),
-      ),
+      dynkin(system("B", 7), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0, label: $1$),
+        "6": v(5, 0),
+        "7": v(6, 0),
+      )),
       [$p <= n - 1$,],
 
       [$SO_(2 n) (CC)$, $n >= 3$:],
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0, label: $1$),
-          d: v(5, 0),
-          e: v(6, 0.5),
-          f: v(6, -0.5),
-        ),
-        (
-          bond("a", "b"),
-          gap("b", "c"),
-          gap("c", "d"),
-          bond("d", "e"),
-          bond("d", "f"),
-        ),
-      ),
+      dynkin(system("D", 8), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0, label: $1$),
+        "6": v(5, 0),
+        "7": v(6, 0.5),
+        "8": v(6, -0.5),
+      )),
       $p <= n - 2$,
     )
     (the unit occupies the $p$-th
     place.)] <exc:exterior-powers-identity-diagrams>
 
   #exercise[The representation $S^p Id$ of $SL_n (CC)$ is irreducible for all
-    $p$, its diagram is $#dynkin(
-      (a: v(0, 0, label: $p$), b: v(1, 0), c: v(3, 0), d: v(4, 0)),
-      (bond("a", "b"), gap("b", "c"), bond("c", "d")),
-    )$ and $S^p Id tilde.op R_p$ for
+    $p$, its diagram is $#dynkin(system("A", 5), (
+      "1": v(0, 0, label: $p$),
+      "2": v(1, 0),
+      "4": v(3, 0),
+      "5": v(4, 0),
+    ))$ and $S^p Id tilde.op R_p$ for
     $n = 2$.] <exc:symmetric-powers-identity-sl-n>
 
   #exercise[Using Theorem~@th:simply-connected-iff-weight-lattice prove that
@@ -1397,49 +1344,42 @@ by $M$ uniquely up to an equivalence.
       align: left + horizon,
       column-gutter: 1.2em,
       row-gutter: 1.2em,
-      dynkin(
-        (a: v(0, 0), b: v(1, 0), c: v(3, 0), d: v(4, 0, label: $1$)),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d", 2, to: "d")),
-      ),
+      dynkin(system("B", 5), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0, label: $1$),
+      )),
       [],
       [],
       [for odd $n$],
 
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0.5, label: $1$),
-          e: v(4, -0.5),
-        ),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d"), bond("c", "e")),
-      ),
+      dynkin(system("D", 7), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "5": v(3, 0),
+        "6": v(4, 0.5, label: $1$),
+        "7": v(4, -0.5),
+      )),
       [],
       [],
       [for $n = 4 k + 2$, $k in ZZ$],
 
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0.5, label: $1$),
-          e: v(4, -0.5),
-        ),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d"), bond("c", "e")),
-      ),
+      dynkin(system("D", 6), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0.5, label: $1$),
+        "6": v(4, -0.5),
+      )),
       $+$,
-      dynkin(
-        (
-          a: v(0, 0),
-          b: v(1, 0),
-          c: v(3, 0),
-          d: v(4, 0.5),
-          e: v(4, -0.5, label: $1$, at: "below"),
-        ),
-        (bond("a", "b"), gap("b", "c"), bond("c", "d"), bond("c", "e")),
-      ),
+      dynkin(system("D", 6), (
+        "1": v(0, 0),
+        "2": v(1, 0),
+        "4": v(3, 0),
+        "5": v(4, 0.5),
+        "6": v(4, -0.5, label: $1$, at: "below"),
+      )),
       [for $n = 4 k$, $k in ZZ$],
     )] <exc:faithful-spin-representations>
 ]

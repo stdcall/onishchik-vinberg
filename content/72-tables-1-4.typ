@@ -3,7 +3,7 @@
 // ends with the description of Table 5.
 #import "main-defs.typ": *
 #import "statements.typ": *
-#import "diagrams/dynkin.typ": bond, dynkin, gap, v
+#import "diagrams/dynkin.typ": dynkin, system, v
 
 // Table 2 prints each matrix after its factor, "1/(l+1) (…)", its columns
 // wider apart than a matrix of the text. TeX keeps a little space at the
@@ -65,15 +65,12 @@ half sum of positive roots).
     [Roots and simple roots],
   ),
   table.cell(rowspan: 2)[$A_l$ \ $(l >= 1)$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(3, 0, label: $ell - 1$),
-      d: v(4, 0, label: $ell$),
-    ),
-    (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 1)),
-  )),
+  table.cell(rowspan: 2, dynkin(system("A", 5), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "4": v(3, 0, label: $ell - 1$),
+    "5": v(4, 0, label: $ell$),
+  ))),
   table.cell(rowspan: 2)[$l^2 + 2l$],
   [$epsilon_i - epsilon_j$],
   [$
@@ -82,15 +79,12 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$B_l$ \ $(l >= 2)$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(3, 0, label: $ell - 1$),
-      d: v(4, 0, label: $ell$),
-    ),
-    (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 2, to: "d")),
-  )),
+  table.cell(rowspan: 2, dynkin(system("B", 5), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "4": v(3, 0, label: $ell - 1$),
+    "5": v(4, 0, label: $ell$),
+  ))),
   table.cell(rowspan: 2)[$2l^2 + l$],
   [$plus.minus epsilon_i plus.minus epsilon_j, plus.minus epsilon_i$],
   [$
@@ -101,15 +95,12 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$C_l$ \ $(l >= 2)$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(3, 0, label: $ell - 1$),
-      d: v(4, 0, label: $ell$),
-    ),
-    (bond("a", "b", 1), gap("b", "c"), bond("c", "d", 2, to: "c")),
-  )),
+  table.cell(rowspan: 2, dynkin(system("C", 5), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "4": v(3, 0, label: $ell - 1$),
+    "5": v(4, 0, label: $ell$),
+  ))),
   table.cell(rowspan: 2)[$2l^2 + l$],
   [$plus.minus epsilon_i plus.minus epsilon_j, plus.minus 2 epsilon_i$],
   [$
@@ -119,21 +110,13 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$D_l$ \ $(l >= 3)$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(3, 0, label: $ell - 2$),
-      d: v(4, 0.5, label: $ell - 1$),
-      e: v(4, -0.5, label: $ell$, at: "below"),
-    ),
-    (
-      bond("a", "b", 1),
-      gap("b", "c"),
-      bond("c", "d", 1),
-      bond("c", "e", 1),
-    ),
-  )),
+  table.cell(rowspan: 2, dynkin(system("D", 6), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "4": v(3, 0, label: $ell - 2$),
+    "5": v(4, 0.5, label: $ell - 1$),
+    "6": v(4, -0.5, label: $ell$, at: "below"),
+  ))),
   table.cell(rowspan: 2)[$2l^2 - l$],
   [$plus.minus epsilon_i plus.minus epsilon_j$],
   [$
@@ -144,23 +127,14 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$E_6$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(2, 0, label: $3$),
-      d: v(3, 0, label: $4$),
-      e: v(4, 0, label: $5$),
-      f: v(2, -1, label: $6$, at: "below"),
-    ),
-    (
-      bond("a", "b", 1),
-      bond("b", "c", 1),
-      bond("c", "d", 1),
-      bond("d", "e", 1),
-      bond("c", "f", 1),
-    ),
-  )),
+  table.cell(rowspan: 2, dynkin(system("E", 6), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "3": v(2, 0, label: $3$),
+    "4": v(3, 0, label: $4$),
+    "5": v(4, 0, label: $5$),
+    "6": v(2, -1, label: $6$, at: "below"),
+  ))),
   table.cell(rowspan: 2)[$78$],
   [$epsilon_i - epsilon_j, plus.minus 2 epsilon,$ \
     $epsilon_i + epsilon_j + epsilon_k plus.minus epsilon$],
@@ -171,25 +145,15 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$E_7$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(2, 0, label: $3$),
-      d: v(3, 0, label: $4$),
-      e: v(4, 0, label: $5$),
-      f: v(5, 0, label: $6$),
-      g: v(3, -1, label: $7$, at: "below"),
-    ),
-    (
-      bond("a", "b", 1),
-      bond("b", "c", 1),
-      bond("c", "d", 1),
-      bond("d", "e", 1),
-      bond("e", "f", 1),
-      bond("d", "g", 1),
-    ),
-  )),
+  table.cell(rowspan: 2, dynkin(system("E", 7), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "3": v(2, 0, label: $3$),
+    "4": v(3, 0, label: $4$),
+    "5": v(4, 0, label: $5$),
+    "6": v(5, 0, label: $6$),
+    "7": v(3, -1, label: $7$, at: "below"),
+  ))),
   table.cell(rowspan: 2)[$133$],
   [$epsilon_i - epsilon_j,$ \
     $epsilon_i + epsilon_j + epsilon_k + epsilon_l$],
@@ -200,27 +164,16 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$E_8$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(2, 0, label: $3$),
-      d: v(3, 0, label: $4$),
-      e: v(4, 0, label: $5$),
-      f: v(5, 0, label: $6$),
-      g: v(6, 0, label: $7$),
-      h: v(4, -1, label: $8$, at: "below"),
-    ),
-    (
-      bond("a", "b", 1),
-      bond("b", "c", 1),
-      bond("c", "d", 1),
-      bond("d", "e", 1),
-      bond("e", "f", 1),
-      bond("f", "g", 1),
-      bond("e", "h", 1),
-    ),
-  )),
+  table.cell(rowspan: 2, dynkin(system("E", 8), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "3": v(2, 0, label: $3$),
+    "4": v(3, 0, label: $4$),
+    "5": v(4, 0, label: $5$),
+    "6": v(5, 0, label: $6$),
+    "7": v(6, 0, label: $7$),
+    "8": v(4, -1, label: $8$, at: "below"),
+  ))),
   table.cell(rowspan: 2)[$248$],
   [$epsilon_i - epsilon_j, plus.minus (epsilon_i + epsilon_j + epsilon_k)$],
   [$
@@ -230,15 +183,12 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[#source(309)$F_4$],
-  table.cell(rowspan: 2, dynkin(
-    (
-      a: v(0, 0, label: $1$),
-      b: v(1, 0, label: $2$),
-      c: v(2, 0, label: $3$),
-      d: v(3, 0, label: $4$),
-    ),
-    (bond("a", "b", 1), bond("b", "c", 2, to: "b"), bond("c", "d", 1)),
-  )),
+  table.cell(rowspan: 2, dynkin(system("F", 4), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+    "3": v(2, 0, label: $3$),
+    "4": v(3, 0, label: $4$),
+  ))),
   table.cell(rowspan: 2)[$52$],
   [$plus.minus epsilon_i plus.minus epsilon_j, plus.minus epsilon_i$ \
     $(plus.minus epsilon_1 plus.minus epsilon_2 plus.minus epsilon_3
@@ -252,10 +202,10 @@ half sum of positive roots).
   $],
 
   table.cell(rowspan: 2)[$G_2$],
-  table.cell(rowspan: 2, dynkin(
-    (a: v(0, 0, label: $1$), b: v(1, 0, label: $2$)),
-    (bond("a", "b", 3, to: "a"),),
-  )),
+  table.cell(rowspan: 2, dynkin(system("G", 2), (
+    "1": v(0, 0, label: $1$),
+    "2": v(1, 0, label: $2$),
+  ))),
   table.cell(rowspan: 2)[$14$],
   [$epsilon_i - epsilon_j, plus.minus epsilon_i$],
   [$
