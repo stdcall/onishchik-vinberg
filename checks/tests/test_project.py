@@ -25,6 +25,20 @@ from lint_typst import (Exceptions, coverage_checks, from_roman,  # noqa: E402
 from project import (editor_settings, settings, stage, tool_env,  # noqa: E402
                      typst_inputs)
 
+# In the prose of a Typst field an underscore between a word character and a
+# word character or `(` is no emphasis mark: Typst prints `D_l` as written and
+# reads `so_(2l)` as the start of an emphasis. A caret or a double-struck
+# name (`CC`) has no meaning in prose either.
+PLAIN_FORMULA = re.compile(r'(?<=\w)_(?=[\w(])|\^|\b(?:CC|RR|ZZ|QQ|HH)\b')
+
+
+def plain_formulas(markup):
+    """The pieces of mathematics written outside `$…$` in Typst markup."""
+    kinds, _ = scan(markup)
+    prose = re.sub(r'\\.', '  ', view(markup, kinds, (MARKUP,)))
+    return [markup[max(m.start() - 10, 0):m.end() + 10]
+            for m in PLAIN_FORMULA.finditer(prose)]
+
 
 class Corrections(unittest.TestCase):
     """corrections.json, the journal of corrections: each entry names its
@@ -58,6 +72,29 @@ class Corrections(unittest.TestCase):
             ids.append(entry['id'])
         self.assertEqual(ids, [f'C{n:03d}' for n in range(1, len(ids) + 1)],
                          'ids are C001, C002, ... in order')
+
+    def test_formulas_are_in_math(self):
+        """The printed fields hold no mathematics outside `$…$`: `section`
+        and `place` are plain text, the markup fields have no subscript,
+        superscript or double-struck letter in their prose."""
+        data = json.loads((ROOT / 'corrections.json').read_text())
+        for entry in data['entries']:
+            for field in ('section', 'place'):
+                self.assertNotRegex(entry[field], r'[$_^]',
+                                    (entry['id'], field))
+            for field in ('original', 'corrected', 'reason'):
+                self.assertEqual(plain_formulas(entry[field]), [],
+                                 (entry['id'], field))
+
+    def test_plain_formulas(self):
+        for text in ('the groups SL_n(C)', 'so_(2l+1)', 'rho^v = sum',
+                     'D_l and $B_l$', 'prod (m_i + 1)', 'a form of so(2l)(CC)'):
+            self.assertTrue(plain_formulas(text), text)
+        for text in ('The _Multiplicative group_', '_Proof._ If',
+                     'is called _transcendental_ (_over $K$_). If',
+                     '$frak(s o)_(2l+1) (CC)$, $(-1)^(k + p)$',
+                     'a literal \\_ and \\^', 'Humphreys, GTM 9'):
+            self.assertEqual(plain_formulas(text), [], text)
 
 
 class Settings(unittest.TestCase):

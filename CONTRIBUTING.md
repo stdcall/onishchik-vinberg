@@ -258,8 +258,11 @@ corrected in the text minimally and in the authors' style, and recorded in
 `printed_page` is the page of the book (a roman numeral in the front
 matter); `section` groups the list of corrections and `place` names a
 narrower place when there is one. `original`, `corrected` and `reason` are
-Typst markup with formulas in `$…$`; since the list is a separate document,
-they quote numbers as printed ("Problem 2.3.9", "[56]"), never as
+Typst markup with every formula in `$…$`, written as in the chapters
+(`$frak(s o)_(2l+1) (CC)$`; outside math `so_(2l+1)` would start an
+emphasis); the tests reject a subscript, a superscript or a double-struck
+letter outside `$…$`. Since the list is a separate document, these fields
+quote numbers as printed ("Problem 2.3.9", "[56]"), never as
 references. `verified_by` says how the correction was established: the
 printed text and its context, the argument, a script of `checks/sage` or a
 file of `checks/lean`, or a book of the literature cited
