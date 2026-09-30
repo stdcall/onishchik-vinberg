@@ -1867,7 +1867,7 @@
       "place": "Chapter 3, § 3",
       "original": "Theorem 6 (Engel's theorem.) Let ...",
       "corrected": "Theorem 6 (Engel's theorem). Let ...",
-      "reason": "Punctuation of a titled theorem as set by the helper `theorem(title:)` (full stop after the parenthesis, as in “Corollary 1 (Lie's theorem for algebraic groups).” of § 2).",
+      "reason": "Punctuation of a titled theorem: full stop after the parenthesis, as in “Corollary 1 (Lie's theorem for algebraic groups).” of § 2.",
       "verified_by": "the printed text"
     },
     {
@@ -1877,7 +1877,7 @@
       "place": "Chapter 3, § 3",
       "original": "Problem 12: $italic(\"ad\") frak(g) subset frak(g l)(frak(g))$; Exercise 8 (p. 129): $italic(\"ad\") frak(g)$; Hint 12 (p. 129): $(italic(\"ad\") X)^(2m - 1)$",
       "corrected": "$ad frak(g) subset frak(g l)(frak(g))$; $ad frak(g)$; $(ad X)^(2m - 1)$",
-      "reason": "Typographic inconsistency: in these three places “ad” is set in italic, elsewhere in the book upright (e.g. “(ad ξ)” in the proof of Theorem 1.4.3, p. 52). Set with the book's upright operator `ad`.",
+      "reason": "Typographic inconsistency: in these three places “ad” is set in italic, elsewhere in the book upright (e.g. “(ad ξ)” in the proof of Theorem 1.4.3, p. 52). Set with the book's upright operator $ad$.",
       "verified_by": "the printed text, also pp. 52, 129"
     },
     {
@@ -3267,7 +3267,7 @@
       "place": "Chapter 4, § 3",
       "original": "26) five diagrams: series gap without dots (\"o—o—   —o—o\")",
       "corrected": "26) series gap with dots, as in the diagrams of Exercises 13, 27, 28, 36",
-      "reason": "The dots of the series are missing in all five diagrams of Exercise 26 (printing); every other series diagram of the section shows them, and the helper `gap` draws them.",
+      "reason": "The dots of the series are missing in all five diagrams of Exercise 26 (printing); every other series diagram of the section shows them.",
       "verified_by": "the printed text"
     },
     {
@@ -5776,7 +5776,7 @@
       "section": "Reference Chapter, § 2",
       "place": "Reference Chapter, § 2",
       "original": "row $frak(s o)_(2, 2l-2)$, $Lambda(G)$: $chevron.l 2Z_1 + Z_2 chevron.r$ $(l = 2p + 1)$",
-      "corrected": "$chevron.l 2Z_1 + Z_2 chevron.r_oo$ (typeset `cyclic(2Z_1 + Z_2, oo)`)",
+      "corrected": "$chevron.l 2Z_1 + Z_2 chevron.r_oo$",
       "reason": "The order subscript is missing (every other entry has one); $2 Z_1 + Z_2$ has infinite order ($Z_1$ does, $Z_2$ has order 2) and generates $Lambda(G) tilde.eq ZZ$.",
       "verified_by": "checks/sage/tables-9-10.py: t10_row so_{2,2l-2}, l = 3, 5, 7, 9: <2Z_1 + Z_2>_oo is exactly (Q^v cap t)/Q^v(k')"
     },
