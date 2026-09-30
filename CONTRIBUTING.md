@@ -6,6 +6,10 @@ Install Typst 0.15.1, Typstyle 0.15.1, Tinymist 0.15.8, Python 3.14, uv and
 just (the Typst tool versions and their Linux builds are pinned in
 `config/project.json`). The fonts and their licences are in `assets/fonts`;
 CeTZ 0.5.2 and fletcher 0.5.8 are fetched by Typst on the first build.
+Typst does not see system fonts, and the build fails if a PDF contains a
+font other than those in `assets/fonts` (including the fonts bundled with
+Typst) or a character that none of them has. A new font is added there as a
+file together with its licence.
 
 ```sh
 uv sync --locked
