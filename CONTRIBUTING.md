@@ -44,7 +44,8 @@ Tinymist and validates the result like `just build`.
 squash after the `check` and `lean` jobs of the workflow "PDF and checks"
 have passed. `git config core.hooksPath .githooks` enables a local hook that
 refuses a direct push to `main`. Every commit on `main` publishes a release
-`main-<commit>` with the book, the list of corrections and `SHA256SUMS`.
+tagged `YYYY-MM-DD.N` (the UTC build date and the build number) with the
+book, the list of corrections and `SHA256SUMS`.
 
 ## Sources
 

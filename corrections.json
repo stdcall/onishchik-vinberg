@@ -4997,7 +4997,7 @@
       "place": "Chapter 5, § 4",
       "original": "is a parabolic subalgebra of $frak(g)(CC)$ (see Exercises to 4.2°)",
       "corrected": "is a parabolic subalgebra of $frak(g)(CC)$ (see Exercises to § 4.2)",
-      "reason": "Malformed reference: exercises belong to a section, and inside Chapter 5 “4.2°” would be subsection 2° of this § 4. Parabolic subalgebras are in the Exercises of Chapter 4, § 2 (index: “subalgebra, parabolic 176”, printed p. 176 = file 191).",
+      "reason": "Malformed reference: exercises belong to a section, and inside Chapter 5 “4.2°” would be subsection 2° of this § 4. Parabolic subalgebras are in the Exercises of Chapter 4, § 2 (index: “subalgebra, parabolic 176”).",
       "verified_by": "the printed text; the printed subject index"
     },
     {
