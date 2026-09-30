@@ -47,7 +47,7 @@
       "place": "Front matter",
       "original": "$PP$—$n$-dimensional coordinate projective space",
       "corrected": "$PP^n$—$n$-dimensional coordinate projective space",
-      "reason": "The exponent is missing: the entry describes the n-dimensional space, like $AA^n$ in the line above.",
+      "reason": "The exponent is missing: the entry describes the $n$-dimensional space, like $AA^n$ in the line above.",
       "verified_by": "the printed text"
     },
     {
@@ -587,7 +587,7 @@
       "place": "Chapter 1, § 3",
       "original": "Problem 11. Let $f$ be a homomorphism of a connected Lie group $G$ into a Lie group $H$. The following conditions are equivalent:",
       "corrected": "Problem 11. Let $f$ be a homomorphism of a connected Lie group $G$ onto a Lie group $H$. The following conditions are equivalent:",
-      "reason": "With “into” the equivalence fails: the embedding $RR -> RR^2$ has a discrete (trivial) kernel, but $d f$ is not an isomorphism and it is not a covering. Hint 11 derives 1) <=> 2) <=> 4) from Theorem 1.2 (statement 3 needs $f(G) = H$ to be a Lie subgroup) and 2) => 3) from Theorem 1.5, which is about epimorphisms; both examples that follow are onto ($RR -> TT$, $SL_2 (CC) -> SO_3 (CC)$). Probably the Russian “на” (onto) rendered as “into”.",
+      "reason": "With “into” the equivalence fails: the embedding $RR -> RR^2$ has a discrete (trivial) kernel, but $d f$ is not an isomorphism and it is not a covering. Hint 11 derives 1) $<=>$ 2) $<=>$ 4) from Theorem 1.2 (statement 3 needs $f(G) = H$ to be a Lie subgroup) and 2) $=>$ 3) from Theorem 1.5, which is about epimorphisms; both examples that follow are onto ($RR -> TT$, $SL_2 (CC) -> SO_3 (CC)$). Probably the Russian “на” (onto) rendered as “into”.",
       "verified_by": "the printed text; Hint 11 (p. 49); Theorems 1.2 and 1.5 in content/11-background.typ; checks/sage/chapter-1.py: “Problem 3.11 with \"into\": 2) => 4)” refuted (the embedding R -> R^2), and for the onto examples “Example 3.2.2: ad sl_2 = o(sl_2, det)”, “Ker Ad = {E, -E}”"
     },
     {
@@ -807,7 +807,7 @@
       "place": "Chapter 1, § 4",
       "original": "Problem 13. A Lie algebra $frak(g)$ is semisimple if and only if it has no commutative ideals.",
       "corrected": "Problem 13. A Lie algebra $frak(g)$ is semisimple if and only if it has no nonzero commutative ideals.",
-      "reason": "Literally false: the zero ideal is commutative, so no Lie algebra would be semisimple. “Nonzero” is meant: Exercise 8 speaks of a commutative ideal “of positive dimension”, Hint 13 takes the last nonzero derived algebra of $rad frak(g)$. Humphreys, Introduction to Lie Algebras and Representation Theory (3rd printing, 1980), § 5.1, p. 22: semisimplicity “is equivalent to requiring that L have no nonzero abelian ideals”.",
+      "reason": "Literally false: the zero ideal is commutative, so no Lie algebra would be semisimple. “Nonzero” is meant: Exercise 8 speaks of a commutative ideal “of positive dimension”, Hint 13 takes the last nonzero derived algebra of $rad frak(g)$. Humphreys, Introduction to Lie Algebras and Representation Theory (3rd printing, 1980), § 5.1, p. 22: semisimplicity “is equivalent to requiring that $L$ have no nonzero abelian ideals”.",
       "verified_by": "the printed text; J. E. Humphreys, Introduction to Lie Algebras and Representation Theory, § 5.1; checks/sage/chapter-1.py: “Problem 4.13” (sl_2 semisimple, 0 a commutative ideal; the printed equivalence refuted) and “Hint 4.13” on twelve non-semisimple algebras (the last nonzero derived algebra of the certified radical is a nonzero commutative ideal)"
     },
     {
@@ -1877,7 +1877,7 @@
       "place": "Chapter 3, § 3",
       "original": "Problem 12: $italic(\"ad\") frak(g) subset frak(g l)(frak(g))$; Exercise 8 (p. 129): $italic(\"ad\") frak(g)$; Hint 12 (p. 129): $(italic(\"ad\") X)^(2m - 1)$",
       "corrected": "$ad frak(g) subset frak(g l)(frak(g))$; $ad frak(g)$; $(ad X)^(2m - 1)$",
-      "reason": "Typographic inconsistency: in these three places “ad” is set in italic, elsewhere in the book upright (e.g. “(ad ξ)” in the proof of Theorem 1.4.3, p. 52). Set with the book's upright operator $ad$.",
+      "reason": "Typographic inconsistency: in these three places “ad” is set in italic, elsewhere in the book upright (e.g. “$(ad xi)$” in the proof of Theorem 1.4.3, p. 52). Set with the book's upright operator $ad$.",
       "verified_by": "the printed text, also pp. 52, 129"
     },
     {
@@ -4357,7 +4357,7 @@
       "place": "Chapter 5, § 2",
       "original": "8) The fundamental groups of the classical groups (except those studied in 1.3°) are of the following form:",
       "corrected": "8) The fundamental groups of the classical groups (except those studied in 1.3) are of the following form:",
-      "reason": "Wrong reference: by the numbering rule of the Preface “1.3°” inside Chapter 5 is 5.1.3° (The Compact Real Form), where no fundamental groups are computed. The fundamental groups of the classical groups SL_n(C), Sp_2n(C), SO_n(C), SU_n, Sp_n, SO_n are found in Ch. 1 § 3 (Problems 1.3.17, 1.3.18, Exercises 1.3.8, 1.3.9), and exactly these groups are absent from the list of Exercise 8. The section of another chapter is written as the book does it in this chapter (“proved in 3.4”, p. 247).",
+      "reason": "Wrong reference: by the numbering rule of the Preface “1.3°” inside Chapter 5 is 5.1.3° (The Compact Real Form), where no fundamental groups are computed. The fundamental groups of the classical groups $SL_n (CC)$, $Sp_(2n) (CC)$, $SO_n (CC)$, $SU_n$, $Sp_n$, $SO_n$ are found in Ch. 1 § 3 (Problems 1.3.17, 1.3.18, Exercises 1.3.8, 1.3.9), and exactly these groups are absent from the list of Exercise 8. The section of another chapter is written as the book does it in this chapter (“proved in 3.4”, p. 247).",
       "verified_by": "the printed text; content/13-connectedness.typ (Problems 17, 18, Exercises 8, 9); content/51-real-forms.typ 3°"
     },
     {
@@ -4497,7 +4497,7 @@
       "place": "Chapter 5, § 3",
       "original": "that $(ad frak(g)) inter S(frak(g)) = ad frak(p)$. Therefore $hat(P) = exp ad frak(g)$ (see Theorem 2.1).",
       "corrected": "that $(ad frak(g)) inter S(frak(g)) = ad frak(p)$. Therefore $hat(P) = exp ad frak(p)$ (see Theorem 2.1).",
-      "reason": "By Theorem 2.1, $hat(P) = exp((ad frak(g)) inter S(frak(g)))$, which the same sentence identifies with $ad frak(p)$; diagram (7) maps $ad frak(p)$ onto $hat(P)$ by exp, and p. 260 sets $hat(P) = exp ad frak(p)$.",
+      "reason": "By Theorem 2.1, $hat(P) = exp((ad frak(g)) inter S(frak(g)))$, which the same sentence identifies with $ad frak(p)$; diagram (7) maps $ad frak(p)$ onto $hat(P)$ by $exp$, and p. 260 sets $hat(P) = exp ad frak(p)$.",
       "verified_by": "the printed text"
     },
     {
@@ -4777,7 +4777,7 @@
       "place": "Chapter 5, § 3",
       "original": "Hint 20. Apply Lemma $frak(z)$ to $frak(h)(CC)$",
       "corrected": "Hint 20. Apply Lemma 3 to $frak(h)(CC)$",
-      "reason": "Font slip: the digit 3 is printed as a fraktur z (ʒ); Lemma 3 is the lemma for $sigma$-invariant reductive algebraic subalgebras.",
+      "reason": "Font slip: the digit 3 is printed as a fraktur z ($frak(z)$); Lemma 3 is the lemma for $sigma$-invariant reductive algebraic subalgebras.",
       "verified_by": "the printed text"
     },
     {
@@ -5307,7 +5307,7 @@
       "place": "Reference Chapter, § 1",
       "original": "... if and only if $Lambda_(2 rho - 1) = Lambda_(2p)$ for $frak(g)(CC) = frak(\"so\")_(4p) (CC)$",
       "corrected": "... if and only if $Lambda_(2p - 1) = Lambda_(2p)$ for $frak(g)(CC) = frak(\"so\")_(4p) (CC)$",
-      "reason": "Misprint rho for p in the index. The condition concerns the labels of the two end vertices 2p - 1 and 2p of the Dynkin diagram of D_(2p) = so_(4p), exchanged by tau (by (F13) the condition is nu tau(Lambda) = Lambda with nu = id); the right-hand side of the same equality has 2p.",
+      "reason": "Misprint $rho$ for $p$ in the index. The condition concerns the labels of the two end vertices $2p - 1$ and $2p$ of the Dynkin diagram of $D_(2p) = frak(\"so\")_(4p)$, exchanged by $tau$ (by (F13) the condition is $nu tau(Lambda) = Lambda$ with $nu = id$); the right-hand side of the same equality has $2p$.",
       "verified_by": "the printed text; checks/sage/reference-tables-1-4-8.py, section '1.3: indices, classical forms (explicit matrices)': for so(p,q), p and q odd, p + q = 8 and 12, the half-spin representations admit no antilinear self-intertwiner and are conjugate to each other ((F12), (F13))"
     },
     {
@@ -5357,7 +5357,7 @@
       "place": "Reference Chapter, § 1",
       "original": "table, $frak(\"so\")_(2k, 2(l - k) + 1)$: $(-1)^((k + l(l - 1)\\/2) Lambda_l)$",
       "corrected": "table, $frak(\"so\")_(2k, 2(l - k) + 1)$: $(-1)^((k + l(l + 1)\\/2) Lambda_l)$",
-      "reason": "Wrong exponent: l(l-1)/2 is the value for D_l. For B_l, rho^v = sum (l - j + 1) eps_j and u = pi_k^v \\/ 2 = (eps_1 + ... + eps_k)/2, so (F14) gives 2 Lambda(2u + rho^v) = (k + l(l + 1)/2) Lambda_l mod 2. The printed exponent differs by l Lambda_l and fails for every odd l. Counterexamples: the split form so_(4,3) (k = 2, l = 3), all of whose representations are real, gets -1 for the spin representation; so_(2,5) gets +1 although its spin representation is quaternionic.",
+      "reason": "Wrong exponent: $l(l - 1)\\/2$ is the value for $D_l$. For $B_l$, $rho^or = sum_(1 <= j <= l) (l - j + 1) epsilon_j$ and $u = pi_k^or \\/ 2 = (epsilon_1 + dots.c + epsilon_k)\\/2$, so (F14) gives $2 Lambda(2u + rho^or) equiv (k + l(l + 1)\\/2) Lambda_l mod 2$. The printed exponent differs by $l Lambda_l$ and fails for every odd $l$. Counterexamples: the split form $frak(\"so\")_(4, 3)$ ($k = 2$, $l = 3$), all of whose representations are real, gets $-1$ for the spin representation; $frak(\"so\")_(2, 5)$ gets $+1$ although its spin representation is quaternionic.",
       "verified_by": "checks/sage/reference-tables-1-4-8.py, section '1.3: indices, classical forms (explicit matrices)' (spin representation from the Clifford algebra of so(p,q), p + q = 5, 7, 9, 11, all p; the printed entry fails for so(1,6), so(2,5), so(3,4), so(1,10), so(2,9), so(3,8), so(4,7), so(5,6)) and section '1.3: the table against (F14), ranks up to 8' (B_2..B_8)"
     },
     {
@@ -5367,7 +5367,7 @@
       "place": "Reference Chapter, § 2",
       "original": "Table 1, row $B_l$ $(l >= 2)$: $delta = epsilon_1 + epsilon_2 = pi_2$",
       "corrected": "Table 1, row $B_l$ $(l >= 2)$: $delta = epsilon_1 + epsilon_2 = cases(pi_2 \"for\" l >= 3\",\", 2 pi_2 \"for\" l = 2)$",
-      "reason": "For l = 2 the table itself gives $pi_2 = (epsilon_1 + epsilon_2)\\/2$ (p. 294), so $delta = 2 pi_2$; the row is headed l >= 2. The exception is written as the row $D_l$ writes its own (l = 3).",
+      "reason": "For $l = 2$ the table itself gives $pi_2 = (epsilon_1 + epsilon_2)\\/2$ (p. 294), so $delta = 2 pi_2$; the row is headed $l >= 2$. The exception is written as the row $D_l$ writes its own ($l = 3$).",
       "verified_by": "checks/sage/reference-tables-1-4-8.py, section 'Table 1': delta = pi_2 for B_3..B_8, refuted for B_2, delta = 2 pi_2 for B_2"
     },
     {
@@ -5437,7 +5437,7 @@
       "place": "Reference Chapter, § 2",
       "original": "Table 4, row $D_l$: $1, 3, 5, ..., 2l - 1, l - 1$",
       "corrected": "Table 4, row $D_l$: $1, 3, 5, ..., 2l - 3, l - 1$",
-      "reason": "The printed list has l + 1 terms; its maximum plus one is 2l, not the $abs(h) = 2(l - 1)$ of the same row ((F5)), and prod (m_i + 1) is not the printed $abs(W) = 2^(l - 1) l!$ ((F3)). The exponents of $D_l$ are 1, 3, ..., 2l - 3, l - 1: N. Bourbaki, Lie Groups and Lie Algebras, Ch. 4-6 (Springer 2002), Ch. VI, § 4, no. 8 (IX); J. E. Humphreys, Reflection Groups and Coxeter Groups (1990), § 3.7, Table 1 (degrees 2, 4, ..., 2n - 2, n). The printed 2l - 1 was copied from the row $B_l, C_l$.",
+      "reason": "The printed list has $l + 1$ terms; its maximum plus one is $2l$, not the $abs(h) = 2(l - 1)$ of the same row ((F5)), and $product (m_i + 1)$ is not the printed $abs(W) = 2^(l - 1) l!$ ((F3)). The exponents of $D_l$ are $1, 3, ..., 2l - 3, l - 1$: N. Bourbaki, Lie Groups and Lie Algebras, Ch. 4-6 (Springer 2002), Ch. VI, § 4, no. 8 (IX); J. E. Humphreys, Reflection Groups and Coxeter Groups (1990), § 3.7, Table 1 (degrees $2, 4, ..., 2n - 2, n$). The printed $2l - 1$ was copied from the row $B_l, C_l$.",
       "verified_by": "checks/sage/reference-tables-1-4-8.py, section 'Table 4 and 1.1: (F1)-(F8)': the exponents from the height table of 1.1, the eigenvalues of the Coxeter element (F6), (F3), (F4), (F5), (F7) give 1, 3, ..., 2l - 3, l - 1 for D_3..D_8; the printed list is refuted for each"
     },
     {
@@ -5635,7 +5635,7 @@
       "printed_page": 308,
       "section": "Reference Chapter, § 2",
       "place": "Reference Chapter, § 2",
-      "original": "Table 7, row $F_4$ ($F I I$), column “Type of $frak(g)^theta$”: “B₄” in bold upright type",
+      "original": "Table 7, row $F_4$ ($F I I$), column “Type of $frak(g)^theta$”: “$bold(B_4)$” in bold upright type",
       "corrected": "$B_4$",
       "reason": "Font slip: every type in this column and elsewhere in the tables is set in italic ($C_3 plus.o A_1$ in the row above).",
       "verified_by": "the printed text"
@@ -5687,7 +5687,7 @@
       "place": "Reference Chapter, § 2",
       "original": "row $frak(s o)_(p, 2l+1-p)$, $dim frak(k)$: $p(2p + 1) + (2l + 1 - p) dot.c (4l + 3 - 2p)$",
       "corrected": "$p(p - 1)\\/2 + (2l + 1 - p) dot.c (2l - p)\\/2$",
-      "reason": "$frak(k) = frak(s o)_p plus.o frak(s o)_(2l+1-p)$ has dimension $p(p - 1)\\/2 + (2l + 1 - p)(2l - p)\\/2$; the printed expression is $dim frak(s p)_p + dim frak(s p)_(2l+1-p)$ (13 instead of 1 already for so_(1,2)). The corrected value with the printed $dim frak(p) = p(2l + 1 - p)$ gives $l(2l + 1) = dim frak(s o)_(2l+1)$; compare the row so_(p,2l-p) on p. 314. Line breaks kept as printed.",
+      "reason": "$frak(k) = frak(s o)_p plus.o frak(s o)_(2l+1-p)$ has dimension $p(p - 1)\\/2 + (2l + 1 - p)(2l - p)\\/2$; the printed expression is $dim frak(s p)_p + dim frak(s p)_(2l+1-p)$ (13 instead of 1 already for $frak(s o)_(1, 2)$). The corrected value with the printed $dim frak(p) = p(2l + 1 - p)$ gives $l(2l + 1) = dim frak(s o)_(2l+1)$; compare the row $frak(s o)_(p, 2l-p)$ on p. 314. Line breaks kept as printed.",
       "verified_by": "checks/sage/tables-9-10.py: refute 'p. 312: dim k of so_{p,q} = p(2p+1) + (2l+1-p)(4l+3-2p)' for 1 <= p <= l <= 8; table9_row so_{p,2l+1-p}: dim k = dim g - dim p from the Satake diagram, dimension of the printed k, k from the Kac diagram"
     },
     {
@@ -5697,7 +5697,7 @@
       "place": "Reference Chapter, § 2",
       "original": "$frak(s p)_(p, l-p)$ $(1 <= p < ½(l - 1))$",
       "corrected": "$frak(s p)_(p, l-p)$ $(1 <= p <= ½(l - 1))$",
-      "reason": "The strict inequality drops $p = (l - 1)\\/2$ for odd $l$, e.g. sp_(1,2) ($l = 3$), which is not the row sp_(p,p) ($l = 2p$) either; the data of the row hold for $p = (l - 1)\\/2$ ($B C_p$, $dim frak(g)_(lambda_p) = 4(l - 2p) = 4$, $dim frak(g)_(2 lambda_p) = 3$). Table 7 has the same family with $1 <= p <= [l\\/2]$.",
+      "reason": "The strict inequality drops $p = (l - 1)\\/2$ for odd $l$, e.g. $frak(s p)_(1, 2)$ ($l = 3$), which is not the row $frak(s p)_(p, p)$ ($l = 2p$) either; the data of the row hold for $p = (l - 1)\\/2$ ($B C_p$, $dim frak(g)_(lambda_p) = 4(l - 2p) = 4$, $dim frak(g)_(2 lambda_p) = 3$). Table 7 has the same family with $1 <= p <= [l\\/2]$.",
       "verified_by": "checks/sage/tables-9-10.py: refute 'p. 312: sp_{p,l-p} lies in the printed range p < (l-1)/2' for l = 3, 5, 7; table9_row sp_{p,l-p} for 3 <= l <= 8, 1 <= p <= (l-1)/2"
     },
     {
@@ -5747,7 +5747,7 @@
       "place": "Reference Chapter, § 2",
       "original": "$frak(s o)_(2p, 2(l-p)-1)$",
       "corrected": "$frak(s o)_(2p, 2(l-p)+1)$",
-      "reason": "The subscripts add up to $2l - 1$, while the row is a real form of so_(2l+1)(CC) ($Z_2 = h_l\\/2$ of $B_l$; $G_\"lin\" = Spin_(2p, 2(l-p)+1)$; Table 7 lists so_(2p,2(l-p)+1) with the Kac diagram $B_l^((1))$, vertex $p$).",
+      "reason": "The subscripts add up to $2l - 1$, while the row is a real form of $frak(s o)_(2l+1) (CC)$ ($Z_2 = h_l\\/2$ of $B_l$; $G_\"lin\" = Spin_(2p, 2(l-p)+1)$; Table 7 lists $frak(s o)_(2p, 2(l-p)+1)$ with the Kac diagram $B_l^((1))$, vertex $p$).",
       "verified_by": "checks/sage/tables-9-10.py: refute 'p. 319: so_{2p,2(l-p)-1} is a real form of so_{2l+1}(C)'; t10_row so_{2p,2(l-p)+1}, 2 <= p < l <= 9"
     },
     {
@@ -5767,7 +5767,7 @@
       "place": "Reference Chapter, § 2",
       "original": "same row, Generators of $Z(G)$: $Z_1 = h_1, quad Z_2 = h_l\\/2$",
       "corrected": "$Z_1 = h_p, quad Z_2 = h_l\\/2$",
-      "reason": "For $p >= 2$ the simple root $alpha_1$ is compact ($frak(k)(CC) = D_p plus.o B_(l-p)$ has the simple roots $alpha_0, alpha_1, ..., alpha_(p-1)$ and $alpha_(p+1), ..., alpha_l$, Table 7), so $h_1 in Q^or(frak(k)(CC)')$ and $exp 2 pi i h_1 = e$: the printed $Z(G)$ would have order 2, not 4. The entry is copied from the row so_(2,2l-1) above, where $p = 1$. $h_p$ has order 2, generates $Lambda(G)$ (the kernel of $G -> Spin_(2p, 2(l-p)+1)$) and with $Z_2$ gives $Z(G) tilde.eq ZZ_2 times ZZ_2$, as $Z_3 = h_p$ in the rows of so_(2l)(CC).",
+      "reason": "For $p >= 2$ the simple root $alpha_1$ is compact ($frak(k)(CC) = D_p plus.o B_(l-p)$ has the simple roots $alpha_0, alpha_1, ..., alpha_(p-1)$ and $alpha_(p+1), ..., alpha_l$, Table 7), so $h_1 in Q^or(frak(k)(CC)')$ and $exp 2 pi i h_1 = e$: the printed $Z(G)$ would have order 2, not 4. The entry is copied from the row $frak(s o)_(2, 2l-1)$ above, where $p = 1$. $h_p$ has order 2, generates $Lambda(G)$ (the kernel of $G -> Spin_(2p, 2(l-p)+1)$) and with $Z_2$ gives $Z(G) tilde.eq ZZ_2 times ZZ_2$, as $Z_3 = h_p$ in the rows of $frak(s o)_(2l) (CC)$.",
       "verified_by": "checks/sage/tables-9-10.py: t10_row so_{2p,2(l-p)+1}: printed generators (Z_1 = h_1) refuted for 2 <= p <= l <= 9; corrected Z(G), Lambda(G), Z(G_lin) = Z_2, pi_1(G_lin) = Z_2 for 2 <= p < l <= 9"
     },
     {
@@ -5807,7 +5807,7 @@
       "place": "Reference Chapter, § 2",
       "original": "same row, $b_0$: $0$",
       "corrected": "$(p + (l - 1)(l - 2)\\/2)Z_2$",
-      "reason": "For odd $l$ the half-spinor representations of so_(2p+1,2(l-p)-1) are self-conjugate ($nu tau = id$) and their index is $(-1)^(p + (l - 1)\\/2)$: they restrict to $frak(k) = frak(s o)_(2p+1) plus.o frak(s o)_(2(l-p)-1)$ as $S_(2p+1) times.o S_(2(l-p)-1)$, and e.g. for so_(3,7) this is quaternionic times real. The printed $b_0 = 0$ gives index $+1$ and fails for so_(3,7), so_(5,9), so_(3,15), so_(7,11). The corrected value is the book's own index formula of 1.3 for so_(2k-1,2(l-k)+1), $k = p + 1$, written in the style of the row so_(2p,2(l-p)+1); for even $l$ the half-spinors are not self-conjugate and any multiple of $Z_2$ serves.",
+      "reason": "For odd $l$ the half-spinor representations of $frak(s o)_(2p+1, 2(l-p)-1)$ are self-conjugate ($nu tau = id$) and their index is $(-1)^(p + (l - 1)\\/2)$: they restrict to $frak(k) = frak(s o)_(2p+1) plus.o frak(s o)_(2(l-p)-1)$ as $S_(2p+1) times.o S_(2(l-p)-1)$, and e.g. for $frak(s o)_(3, 7)$ this is quaternionic times real. The printed $b_0 = 0$ gives index $+1$ and fails for $frak(s o)_(3, 7)$, $frak(s o)_(5, 9)$, $frak(s o)_(3, 15)$, $frak(s o)_(7, 11)$. The corrected value is the book's own index formula of 1.3 for $frak(s o)_(2k-1, 2(l-k)+1)$, $k = p + 1$, written in the style of the row $frak(s o)_(2p, 2(l-p)+1)$; for even $l$ the half-spinors are not self-conjugate and any multiple of $Z_2$ serves.",
       "verified_by": "checks/sage/tables-9-10.py: refute the spinor index for b_0 = 0 (so_(3,7), so_(5,9), so_(3,15), so_(7,11)); t10_row so_{2p+1,2(l-p)-1}, 3 <= l <= 9, b_0 against the spinor index computed from explicit gamma matrices (vector and exterior powers real)"
     },
     {
